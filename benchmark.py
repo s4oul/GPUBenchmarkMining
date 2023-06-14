@@ -8,7 +8,7 @@ from stratum import Stratum
 class Benchmark:
 
     def __init__(self, mining_duration: int, miner: GPUMiner, stratum: Stratum):
-        self.duration_bench = 10 # mining_duration * 60
+        self.duration_bench = mining_duration * 60
         self.miner = miner
         self.thread = None
         self.stratum = stratum
