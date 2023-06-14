@@ -69,7 +69,9 @@ for miner in miners:
     stratum.close()
     shares[miner.get_name()] = miner.get_shares()
 
-for miner in miners:
-    print(f'Miner {miner.get_name()} found {miner.get_shares()} shares.')
+with open('result_benchmark', 'w') as fd:
+    for miner in miners:
+        print(f'Miner {miner.get_name()} found {miner.get_shares()} shares.')
+        fd.write(f'Miner {miner.get_name()} found {miner.get_shares()} shares.')
 
 print('Benchmark finished!')

@@ -152,6 +152,9 @@ class Stratum:
             self.thread_notify.start()
         elif 'mining.submit' == method:
             self.miner.increase_share()
+            response = '{"id":-1,"result":true,"error":null}'
+            response = response.replace('-1', str(data["id"]))
+            self.send(client, response)
         elif 'mining.extranonce.subscribe' == method:
             pass
         elif 'eth_submitHashrate' == method:
