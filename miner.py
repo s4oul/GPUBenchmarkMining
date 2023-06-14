@@ -4,6 +4,7 @@ import zipfile
 import psutil
 import subprocess
 import urllib.request
+from stratum import Stratum
 
 
 class GPUMiner:
@@ -80,13 +81,19 @@ class GPUMiner:
             return False
         return True
 
-    def run(self):
+    def run(self, stratum: Stratum, show_stdout: bool):
 
         exe = f'{self.exe}{".exe" if os.name == "nt" else ""}'
-        cmd = f'cd {self.get_folder_extracted()} && {exe} {self.get_args()}'
+        parameters = self.get_args()\
+            .replace('<HOST>', stratum.get_host())\
+            .replace('<PORT>', str(stratum.get_port()))
 
-        print('CMD', cmd)
-        self.process = subprocess.Popen(cmd, shell=True)
+        cmd = f'cd {self.get_folder_extracted()} && {exe} {parameters}'
+
+        self.process = subprocess.Popen(
+            cmd,
+            stdout=None if show_stdout is True else subprocess.PIPE,
+            shell=True)
 
     def kill(self):
         system_process = psutil.Process(self.process.pid)
@@ -96,4 +103,3 @@ class GPUMiner:
 
     def increase_share(self):
         self.share += 1
-        print(f'{datetime.datetime.now()} shares count [{self.share}].')

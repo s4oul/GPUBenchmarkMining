@@ -23,6 +23,13 @@ class Stratum:
         self.notifies = []
         self.jobs = None
         self.miner = None
+        self.chrono_start = None
+
+    def get_host(self) -> str:
+        return self.host
+
+    def get_port(self) -> int:
+        return self.port
 
     def start(self, miner):
         print(f'Start pool on "{self.host}:{self.port}" !')
@@ -64,6 +71,7 @@ class Stratum:
         self.clients = list()
 
     def __loop_recv_msg(self):
+        self.chrono_start = datetime.datetime.now()
         while self.running and len(self.clients) > 0:
             for client in self.clients:
                 try:
@@ -151,7 +159,11 @@ class Stratum:
             self.thread_notify = threading.Thread(target=self.__loop_notify, args=[client])
             self.thread_notify.start()
         elif 'mining.submit' == method:
+            now = datetime.datetime.now()
+            elapsed = now - self.chrono_start
             self.miner.increase_share()
+            count = self.miner.get_shares()
+            print(f'{datetime.datetime.now()} shares count [{count}], time elapsed [{elapsed}].')
             response = '{"id":-1,"result":true,"error":null}'
             response = response.replace('-1', str(data["id"]))
             self.send(client, response)
