@@ -27,9 +27,10 @@ parser.add_argument('--mining_duration',
                     default=20,
                     type=int,
                     help="Minutes")
-parser.add_argument('--no_show_mining_output',
-                    action=argparse.BooleanOptionalAction)
 
+parser.add_argument('--show_mining_output', action='store_false')
+parser.add_argument('--no_show_mining_output', dest='show_mining_output', action='store_false')
+parser.set_defaults(feature=True)
 
 args = parser.parse_args()
 
@@ -67,7 +68,7 @@ if stratum.load_jobs() is False:
 for miner in miners:
     bench = Benchmark(args.mining_duration, miner, stratum)
     stratum.start(miner)
-    bench.run(False if args.no_show_mining_output is True else True)
+    bench.run(args.show_mining_output)
     stratum.disconnect_all()
     stratum.close()
     shares[miner.get_name()] = miner.get_shares()
