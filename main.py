@@ -20,10 +20,13 @@ parser.add_argument('--port',
                     default='7878',
                     help="")
 parser.add_argument('--algo',
-                    required=False,
                     default='kawpow',
                     type=str,
                     help="[kawpow]")
+parser.add_argument('--mining_duration',
+                    default=20,
+                    type=int,
+                    help="Minutes")
 
 args = parser.parse_args()
 
@@ -59,13 +62,12 @@ if stratum.load_jobs() is False:
 
 # Run benchmark
 for miner in miners:
-    bench = Benchmark(miner, stratum)
+    bench = Benchmark(args.mining_duration, miner, stratum)
     stratum.start(miner)
     bench.run()
     stratum.disconnect_all()
     stratum.close()
     shares[miner.get_name()] = miner.get_shares()
-    break
 
 for miner in miners:
     print(f'Miner {miner.get_name()} found {miner.get_shares()} shares.')
