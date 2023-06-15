@@ -27,6 +27,11 @@ class Stratum:
         self.shares = None
         self.chrono_start = None
 
+    def is_running(self) -> bool:
+        if len(self.clients) == 0:
+            self.running = False
+        return self.running
+
     def get_host(self) -> str:
         return self.host
 
@@ -63,6 +68,7 @@ class Stratum:
             client.sendall(bytes(msg, encoding="utf-8"))
         except Exception as error:
             print(f'Fail to send: {error}.')
+            self.running = False
 
     def close(self):
         self.disconnect_all()
@@ -75,9 +81,9 @@ class Stratum:
 
     def __loop_recv_msg(self):
         self.chrono_start = datetime.datetime.now()
-        while self.running and len(self.clients) > 0:
-            for client in self.clients:
-                try:
+        try:
+            while self.is_running() is True:
+                for client in self.clients:
                     raw = client.recv(2040)
                     if not raw:
                         return
@@ -89,26 +95,30 @@ class Stratum:
                         print(f'[{datetime.datetime.now()}] <== {data}')
                         if 'method' in data:
                             self.__dispatch_method(client, data)
-
-                except Exception as error:
-                    print(f'Error {error}')
-                    self.running = False
+        except Exception as error:
+            print(f'Error {error}')
+            self.running = False
 
     def __loop_notify(self, client: socket):
         for i in range(0, len(self.notifies)):
-            if self.running is True and client:
-                notify = self.notifies[i]
-                params = str(notify["params"])\
-                    .replace("'", '"')\
-                    .replace('True', 'true')\
-                    .replace('False', 'false')
-                msg = '{' \
-                      '"id": null, '\
-                      '"method": "mining.notify", '\
-                      f'"params": {params}'\
-                      '}'
-                self.send(client, msg)
-            time.sleep(5)
+            if self.is_running() is False:
+                return
+            notify = self.notifies[i]
+            params = str(notify["params"])\
+                .replace("'", '"')\
+                .replace('True', 'true')\
+                .replace('False', 'false')
+            msg = '{' \
+                  '"id": null, '\
+                  '"method": "mining.notify", '\
+                  f'"params": {params}'\
+                  '}'
+            self.send(client, msg)
+            timeout = int(self.jobs['delay'])
+            for cnt in range(0, timeout):
+                if self.is_running() is False:
+                    return
+                time.sleep(1)
 
     def load_jobs(self):
         try:
