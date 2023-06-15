@@ -11,6 +11,7 @@ from stratum import Stratum
 class GPUMiner:
 
     def __init__(self, json_data: dict):
+        self.running = False
         self.share = 0
         self.process = None
         self.name = json_data['name']
@@ -33,6 +34,9 @@ class GPUMiner:
             else:
                 self.folder_extracted = os.path.join(self.folder_extracted,
                                                      f'pickminer_{self.version}')
+
+    def is_running(self) -> bool:
+        return self.running
 
     def get_name(self) -> str:
         return self.name
@@ -106,12 +110,14 @@ class GPUMiner:
 
         print(cmd)
 
+        self.running = True
         self.process = subprocess.Popen(
             cmd,
             stdout=None if show_stdout is True else subprocess.PIPE,
             shell=True)
 
     def kill(self):
+        self.running = False
         system_process = psutil.Process(self.process.pid)
         for proc in system_process.children(recursive=True):
             proc.kill()

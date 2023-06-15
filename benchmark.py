@@ -15,7 +15,10 @@ class Benchmark:
 
     def __async_run(self, show_stdout: bool):
         self.miner.run(self.stratum_client, show_stdout)
-        time.sleep(self.duration_bench)
+        timing = self.duration_bench
+        while self.miner.is_running() is True and timing > 0:
+            time.sleep(1)
+            timing -= 1
         self.miner.kill()
 
     def run(self, show_stdout: bool):
