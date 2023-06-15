@@ -7,14 +7,14 @@ from stratum import Stratum
 
 class Benchmark:
 
-    def __init__(self, mining_duration: int, miner: GPUMiner, stratum: Stratum):
+    def __init__(self, mining_duration: int, miner: GPUMiner, stratum_client: Stratum):
         self.duration_bench = mining_duration * 60
         self.miner = miner
         self.thread = None
-        self.stratum = stratum
+        self.stratum_client = stratum_client
 
     def __async_run(self, show_stdout: bool):
-        self.miner.run(self.stratum, show_stdout)
+        self.miner.run(self.stratum_client, show_stdout)
         time.sleep(self.duration_bench)
         self.miner.kill()
 
