@@ -64,21 +64,15 @@ except Exception as error:
 stratum_client = Stratum(args.algo, args.host, args.port)
 if stratum_client.load_jobs() is False:
     exit(1)
-stratum_dev = Stratum(args.algo, args.host, args.port)
-if stratum_dev.load_jobs() is False:
-    exit(1)
 
 # Run benchmark
 for miner in miners:
     shares.add_miner(miner.get_name())
     bench = Benchmark(args.mining_duration, miner, stratum_client)
     stratum_client.start(miner, shares)
-    stratum_dev.start(miner, shares)
     bench.run(args.show_mining_output)
     stratum_client.disconnect_all()
     stratum_client.close()
-    stratum_dev.disconnect_all()
-    stratum_dev.close()
 
 shares.draw_graph()
 
