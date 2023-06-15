@@ -4,6 +4,7 @@ import zipfile
 import psutil
 import subprocess
 import urllib.request
+
 from stratum import Stratum
 
 

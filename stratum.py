@@ -6,6 +6,7 @@ import json
 import time
 
 from algorithm import Algorithm
+from share import Share
 
 
 class Stratum:
@@ -23,6 +24,7 @@ class Stratum:
         self.notifies = []
         self.jobs = None
         self.miner = None
+        self.shares = None
         self.chrono_start = None
 
     def get_host(self) -> str:
@@ -31,13 +33,14 @@ class Stratum:
     def get_port(self) -> int:
         return self.port
 
-    def start(self, miner):
+    def start(self, miner, shares: Share):
         print(f'Start pool on "{self.host}:{self.port}" !')
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.bind((self.host, self.port))
         self.server.listen(1)
         self.running = True
         self.miner = miner
+        self.shares = shares
         self.__listen()
 
     def __listen(self):
@@ -164,6 +167,7 @@ class Stratum:
             self.miner.increase_share()
             count = self.miner.get_shares()
             print(f'{datetime.datetime.now()} shares count [{count}], time elapsed [{elapsed}].')
+            self.shares.add_share(self.miner.get_name(), int(elapsed.total_seconds()), data['params'][2])
             response = '{"id":-1,"result":true,"error":null}'
             response = response.replace('-1', str(data["id"]))
             self.send(client, response)

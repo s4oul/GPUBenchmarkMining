@@ -4,10 +4,11 @@ from algorithm import Algorithm
 from benchmark import Benchmark
 from miner import GPUMiner
 from stratum import Stratum
+from share import Share
 
 # Global Variables
 miners = []
-shares = {}
+shares = Share()
 
 # Arguments
 parser = argparse.ArgumentParser(description='')
@@ -66,12 +67,15 @@ if stratum.load_jobs() is False:
 
 # Run benchmark
 for miner in miners:
+    shares.add_miner(miner.get_name())
     bench = Benchmark(args.mining_duration, miner, stratum)
-    stratum.start(miner)
+    stratum.start(miner, shares)
     bench.run(args.show_mining_output)
     stratum.disconnect_all()
     stratum.close()
-    shares[miner.get_name()] = miner.get_shares()
+    break
+
+shares.draw_graph()
 
 with open('result_benchmark', 'w') as fd:
     for miner in miners:
