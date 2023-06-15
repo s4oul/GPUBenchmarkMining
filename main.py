@@ -73,7 +73,6 @@ for miner in miners:
     bench.run(args.show_mining_output)
     stratum.disconnect_all()
     stratum.close()
-    break
 
 shares.draw_graph()
 
