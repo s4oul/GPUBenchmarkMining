@@ -36,6 +36,11 @@ class GPUMiner:
                                                      f'pickminer_{self.version}')
 
     def is_running(self) -> bool:
+        try:
+            psutil.Process(self.process.pid)
+        except psutil.NoSuchProcess:
+            self.running = False
+
         return self.running
 
     def get_name(self) -> str:
@@ -102,8 +107,8 @@ class GPUMiner:
 
     def run(self, stratum: Stratum, show_stdout: bool):
         exe = f'{"./" if os.name != "nt" else ""}{self.exe}{".exe" if os.name == "nt" else ""}'
-        parameters = self.get_args()\
-            .replace('<HOST>', stratum.get_host())\
+        parameters = self.get_args() \
+            .replace('<HOST>', stratum.get_host()) \
             .replace('<PORT>', str(stratum.get_port()))
 
         cmd = f'cd {self.get_folder_extracted()} && {exe} {parameters}'
@@ -116,11 +121,14 @@ class GPUMiner:
             shell=True)
 
     def kill(self):
-        self.running = False
-        system_process = psutil.Process(self.process.pid)
-        for proc in system_process.children(recursive=True):
-            proc.kill()
-        system_process.kill()
+        try:
+            self.running = False
+            system_process = psutil.Process(self.process.pid)
+            for proc in system_process.children(recursive=True):
+                proc.kill()
+            system_process.kill()
+        except psutil.NoSuchProcess:
+            pass
 
     def increase_share(self):
         self.share += 1
