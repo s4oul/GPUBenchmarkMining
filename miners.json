@@ -10,9 +10,9 @@
     },
     {
       "name": "pickminer",
-      "version": "1.3.1",
-      "url_win": "https://github.com/Pickminer/Pickminer/releases/download/v1.3.1/pickminer_setup_1.3.1.exe",
-      "url_linux": "https://github.com/Pickminer/Pickminer/releases/download/v1.3.1/pickminer_1.3.1_ubuntu_22_04.tar.gz",
+      "version": "1.4.0",
+      "url_win": "https://github.com/Pickminer/Pickminer/releases/download/v1.4.0/pickminer_setup_1.4.0.exe",
+      "url_linux": "https://github.com/Pickminer/Pickminer/releases/download/v1.4.0/pickminer_1.4.0_ubuntu_22_04.tar.gz",
       "exe": "pickminer",
       "args": "--coin=RVN --host=<HOST> --port=<PORT> --wallet=RLamW5oHdNKixUQossfcMWohLRKyGRr2PV --workername=s4oulWnd --opti_ui=true"
     },

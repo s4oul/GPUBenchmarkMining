@@ -11,6 +11,7 @@ from stratum import Stratum
 class GPUMiner:
 
     def __init__(self, json_data: dict):
+        self.running = False
         self.share = 0
         self.process = None
         self.name = json_data['name']
@@ -33,6 +34,14 @@ class GPUMiner:
             else:
                 self.folder_extracted = os.path.join(self.folder_extracted,
                                                      f'pickminer_{self.version}')
+
+    def is_running(self) -> bool:
+        try:
+            psutil.Process(self.process.pid)
+        except psutil.NoSuchProcess:
+            self.running = False
+
+        return self.running
 
     def get_name(self) -> str:
         return self.name
@@ -98,24 +107,31 @@ class GPUMiner:
 
     def run(self, stratum: Stratum, show_stdout: bool):
         exe = f'{"./" if os.name != "nt" else ""}{self.exe}{".exe" if os.name == "nt" else ""}'
-        parameters = self.get_args()\
-            .replace('<HOST>', stratum.get_host())\
+        parameters = self.get_args() \
+            .replace('<HOST>', stratum.get_host()) \
             .replace('<PORT>', str(stratum.get_port()))
 
         cmd = f'cd {self.get_folder_extracted()} && {exe} {parameters}'
 
-        print(cmd)
+        self.running = True
+
+        fd = None if show_stdout is True else subprocess.PIPE
 
         self.process = subprocess.Popen(
             cmd,
-            stdout=None if show_stdout is True else subprocess.PIPE,
+            stdout=fd,
+            stderr=fd,
             shell=True)
 
     def kill(self):
-        system_process = psutil.Process(self.process.pid)
-        for proc in system_process.children(recursive=True):
-            proc.kill()
-        system_process.kill()
+        try:
+            self.running = False
+            system_process = psutil.Process(self.process.pid)
+            for proc in system_process.children(recursive=True):
+                proc.kill()
+            system_process.kill()
+        except psutil.NoSuchProcess:
+            pass
 
     def increase_share(self):
         self.share += 1

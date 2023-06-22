@@ -50,7 +50,6 @@ class Share:
             'nonce': str(nonce),
             'seconds': seconds
         })
-        print(self.results)
 
     def draw_graph(self):
         for miner_name, result in self.results.items():

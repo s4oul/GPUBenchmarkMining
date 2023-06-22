@@ -1,3 +1,4 @@
+import sys
 import argparse
 import json
 from algorithm import Algorithm
@@ -38,9 +39,7 @@ args = parser.parse_args()
 
 # Check algorithm
 if Algorithm.is_valid(args.algo) is False:
-    print(f'Invalid algo [{args.algo}] !')
-    exit(1)
-
+    sys.exit(f'Invalid algo [{args.algo}] !')
 
 try:
     with open('miners.json') as fd:
@@ -56,23 +55,21 @@ try:
             else:
                 print(f'Skip miner {gpu_miner.get_name()}!')
 except Exception as error:
-    print(f'Error: {error}')
-    exit(1)
-
+    sys.exit(f'Stop benchmark ! {error}')
 
 # Start Stratum / Network
-stratum = Stratum(args.algo, args.host, args.port)
-if stratum.load_jobs() is False:
-    exit(1)
+stratum_client = Stratum(args.algo, args.host, args.port)
+if stratum_client.load_jobs() is False:
+    sys.exit('Jobs not found !')
 
 # Run benchmark
 for miner in miners:
     shares.add_miner(miner.get_name())
-    bench = Benchmark(args.mining_duration, miner, stratum)
-    stratum.start(miner, shares)
+    bench = Benchmark(args.mining_duration, miner, stratum_client)
+    stratum_client.start(miner, shares)
     bench.run(args.show_mining_output)
-    stratum.disconnect_all()
-    stratum.close()
+    stratum_client.disconnect_all()
+    stratum_client.close()
 
 shares.draw_graph()
 
