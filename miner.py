@@ -115,9 +115,12 @@ class GPUMiner:
 
         self.running = True
 
+        fd = None if show_stdout is True else subprocess.PIPE
+
         self.process = subprocess.Popen(
             cmd,
-            stdout=None if show_stdout is True else subprocess.PIPE,
+            stdout=fd,
+            stderr=fd,
             shell=True)
 
     def kill(self):

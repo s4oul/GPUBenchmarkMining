@@ -187,4 +187,3 @@ class Stratum:
             pass
         else:
             print(f'Unknow method [{method}]!')
-
