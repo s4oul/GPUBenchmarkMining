@@ -67,12 +67,15 @@ class Stratum:
                 msg = f'{msg}\n'
             client.sendall(bytes(msg, encoding="utf-8"))
         except Exception as error:
-            print(f'Fail to send: {error}.')
+            print(f'ERROR: {error}.')
             self.running = False
 
     def close(self):
         self.disconnect_all()
         self.server.close()
+        self.running = False
+        # waiting thread __loop_notify terminated
+        time.sleep(1)
 
     def disconnect_all(self):
         for client in self.clients:
@@ -95,11 +98,15 @@ class Stratum:
                         print(f'[{datetime.datetime.now()}] <== {data}')
                         if 'method' in data:
                             self.__dispatch_method(client, data)
+        except ConnectionAbortedError:
+            print(f'Client disconnected !')
+            self.running = False
         except Exception as error:
-            print(f'Error {error}')
+            print(f'Error: {error}')
             self.running = False
 
     def __loop_notify(self, client: socket):
+        timeout = int(self.jobs['delay']) * 2
         for i in range(0, len(self.notifies)):
             if self.is_running() is False:
                 return
@@ -114,11 +121,10 @@ class Stratum:
                   f'"params": {params}'\
                   '}'
             self.send(client, msg)
-            timeout = int(self.jobs['delay'])
             for cnt in range(0, timeout):
                 if self.is_running() is False:
                     return
-                time.sleep(1)
+                time.sleep(0.5)
 
     def load_jobs(self):
         try:

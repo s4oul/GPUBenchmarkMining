@@ -21,6 +21,7 @@ class GPUMiner:
         self.exe = json_data['exe']
         self.args = json_data['args']
         self.folder_extracted = os.path.join('miners', f'{self.name}_{self.version}', 'extracted')
+        self.fd = None
 
         if self.name == 'srbminer':
             self.folder_extracted = os.path.join(self.folder_extracted,
@@ -115,12 +116,18 @@ class GPUMiner:
 
         self.running = True
 
-        fd = None if show_stdout is True else subprocess.PIPE
+        if self.fd is not None:
+            self.fd.close()
+
+        self.fd = None if show_stdout is True else subprocess.PIPE
+
+        if self.fd is None:
+            self.fd = open(os.path.join('results', f'{self.name}.log'), 'w')
 
         self.process = subprocess.Popen(
             cmd,
-            stdout=fd,
-            stderr=fd,
+            stdout=self.fd,
+            stderr=self.fd,
             shell=True)
 
     def kill(self):
@@ -130,6 +137,7 @@ class GPUMiner:
             for proc in system_process.children(recursive=True):
                 proc.kill()
             system_process.kill()
+            self.fd.close()
         except psutil.NoSuchProcess:
             pass
 

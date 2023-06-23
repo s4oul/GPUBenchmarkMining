@@ -1,14 +1,6 @@
 {
   "miners": [
     {
-      "name": "t_rex",
-      "version": "0.26.8",
-      "url_win": "https://github.com/trexminer/T-Rex/releases/download/0.26.8/t-rex-0.26.8-win.zip",
-      "url_linux": "https://github.com/trexminer/T-Rex/releases/download/0.26.8/t-rex-0.26.8-linux.tar.gz",
-      "exe": "t-rex",
-      "args": "-a kawpow -o stratum+tcp://<HOST>:<PORT> -u RLamW5oHdNKixUQossfcMWohLRKyGRr2PV.s4oulBenchmark -p x"
-    },
-    {
       "name": "pickminer",
       "version": "1.4.0",
       "url_win": "https://github.com/Pickminer/Pickminer/releases/download/v1.4.0/pickminer_setup_1.4.0.exe",

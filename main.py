@@ -1,6 +1,7 @@
 import sys
 import argparse
 import json
+import os
 from algorithm import Algorithm
 from benchmark import Benchmark
 from miner import GPUMiner
@@ -36,6 +37,12 @@ parser.set_defaults(feature=True)
 
 args = parser.parse_args()
 
+print('BENCHMARK GPU MINING')
+print(f'\tHost: {args.host}')
+print(f'\tPort: {args.port}')
+print(f'\tAlgorithm: {args.algo}')
+print(f'\tDuration: {args.mining_duration}min')
+
 
 # Check algorithm
 if Algorithm.is_valid(args.algo) is False:
@@ -57,6 +64,7 @@ try:
 except Exception as error:
     sys.exit(f'Stop benchmark ! {error}')
 
+
 # Start Stratum / Network
 stratum_client = Stratum(args.algo, args.host, args.port)
 if stratum_client.load_jobs() is False:
@@ -68,14 +76,13 @@ for miner in miners:
     bench = Benchmark(args.mining_duration, miner, stratum_client)
     stratum_client.start(miner, shares)
     bench.run(args.show_mining_output)
-    stratum_client.disconnect_all()
     stratum_client.close()
 
 shares.draw_graph()
 
-with open('result_benchmark', 'w') as fd:
+with open(os.path.join('results', 'result_benchmark.log'), 'w') as fd:
     for miner in miners:
         print(f'Miner {miner.get_name()} found {miner.get_shares()} shares.')
-        fd.write(f'Miner {miner.get_name()} found {miner.get_shares()} shares.')
+        fd.write(f'Miner {miner.get_name()} found {miner.get_shares()} shares.\n')
 
 print('Benchmark finished!')
