@@ -140,8 +140,12 @@ class GPUMiner:
             for proc in system_process.children(recursive=True):
                 proc.kill()
             system_process.kill()
-            if self.fd is not None:
-                self.fd.close()
+            try:
+                if self.fd is not None:
+                    self.fd.close()
+            except Exception:
+                # I dont know why Windows have an error here.
+                pass
         except psutil.NoSuchProcess:
             pass
 
