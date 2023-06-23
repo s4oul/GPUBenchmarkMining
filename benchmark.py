@@ -1,3 +1,4 @@
+import os.path
 import threading
 import time
 
@@ -23,6 +24,11 @@ class Benchmark:
 
     def run(self, show_stdout: bool):
         print(f'Running miner [{self.miner.get_name()}]')
+
+        result_output = os.path.join('results')
+        if os.path.exists(result_output) is False:
+            os.makedirs(result_output)
+
         self.thread = threading.Thread(target=self.__async_run, args=[show_stdout])
         self.thread.start()
         self.thread.join()

@@ -106,6 +106,17 @@ class GPUMiner:
             return False
         return True
 
+    def __get_fd(self, show_stdout: bool):
+        local_fd = subprocess.PIPE
+
+        if show_stdout is False:
+            log_file = os.path.join('results', f'{self.name}.log')
+            print(f'{self.name} is writing LOG => {log_file}.')
+            self.fd = open(log_file, 'w')
+            local_fd = self.fd
+
+        return local_fd
+
     def run(self, stratum: Stratum, show_stdout: bool):
         exe = f'{"./" if os.name != "nt" else ""}{self.exe}{".exe" if os.name == "nt" else ""}'
         parameters = self.get_args() \
@@ -115,13 +126,7 @@ class GPUMiner:
         cmd = f'cd {self.get_folder_extracted()} && {exe} {parameters}'
 
         self.running = True
-
-        local_fd = None if show_stdout is True else subprocess.PIPE
-
-        if local_fd is None:
-            self.fd = open(os.path.join('results', f'{self.name}.log'), 'w')
-            local_fd = self.fd
-
+        local_fd = self.__get_fd(show_stdout)
         self.process = subprocess.Popen(
             cmd,
             stdout=local_fd,
