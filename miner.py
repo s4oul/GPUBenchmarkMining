@@ -119,15 +119,16 @@ class GPUMiner:
         if self.fd is not None:
             self.fd.close()
 
-        self.fd = None if show_stdout is True else subprocess.PIPE
+        local_fd = None if show_stdout is True else subprocess.PIPE
 
-        if self.fd is None:
+        if local_fd is None:
             self.fd = open(os.path.join('results', f'{self.name}.log'), 'w')
+            local_fd = self.fd
 
         self.process = subprocess.Popen(
             cmd,
-            stdout=self.fd,
-            stderr=self.fd,
+            stdout=local_fd,
+            stderr=local_fd,
             shell=True)
 
     def kill(self):
@@ -137,7 +138,8 @@ class GPUMiner:
             for proc in system_process.children(recursive=True):
                 proc.kill()
             system_process.kill()
-            self.fd.close()
+            if self.fd is not None:
+                self.fd.close()
         except psutil.NoSuchProcess:
             pass
 
