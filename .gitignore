@@ -122,3 +122,4 @@ build/*
 gpu_benchmark_mining/*
 miners/*
 results/*
+*.spec
