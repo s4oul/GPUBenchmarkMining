@@ -32,7 +32,7 @@ Command: `main.exe --no_show_mining_output --mining_duration=20`<br>
 Share found:
 | T-REX | PICKMINER | BZMINER | SRBMINER | GMINER |
 | :---: | :-------: | :-----: | :------: | :----: |
-|   52  |   40      |   18     |   0      |  35    |
+|   52  |   40      |   18    |   0      |  35    |
 
 During this test `SRBMINER` does not work.
 ```
