@@ -13,13 +13,33 @@ python3 main.py
 
 
 ## NVIDIA
+---
 OS: `LINUX`<br>
 Algo: `KAWPOW`<br>
 GPU: `NVIDIA RTX 3060`<br>
 Duration: `10 minutes`<br>
+Command: `main.exe --no_show_mining_output --mining_duration=10`<br>
 Share found:
 | T-REX | PICKMINER | BZMINER | SRBMINER | GMINER |
 | :---: | :-------: | :-----: | :------: | :----: |
 |   10  |   10      |   5     |   7      |  11    |
+---
+OS: `WINDOWS`<br>
+Algo: `KAWPOW`<br>
+GPU: `RTX 3060` + `GTX 1070`<br>
+Duration: `20 minutes`<br>
+Command: `main.exe --no_show_mining_output --mining_duration=20`<br>
+Share found:
+| T-REX | PICKMINER | BZMINER | SRBMINER | GMINER |
+| :---: | :-------: | :-----: | :------: | :----: |
+|   52  |   40      |   18     |   0      |  35    |
+
+During this test `SRBMINER` does not work.
+```
+Detecting GPU devices...
+[2023-06-23 13:05:50] Error CL_UNKNOWN_ERROR when getting number of OpenCL platforms
+GPU mining disabled, issues with OpenCL
+No devices available to mine with
+```
 
 ## AMD
