@@ -116,9 +116,6 @@ class GPUMiner:
 
         self.running = True
 
-        if self.fd is not None:
-            self.fd.close()
-
         local_fd = None if show_stdout is True else subprocess.PIPE
 
         if local_fd is None:

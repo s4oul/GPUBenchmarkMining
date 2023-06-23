@@ -99,7 +99,7 @@ class Stratum:
                         if 'method' in data:
                             self.__dispatch_method(client, data)
         except ConnectionAbortedError:
-            print(f'Client disconnected !')
+            print(f'Client has disconnected!')
             self.running = False
         except Exception as error:
             print(f'Error: {error}')
