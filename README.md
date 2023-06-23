@@ -13,10 +13,10 @@ python3 main.py
 
 
 ## NVIDIA
-OS: `LINUX`
-Algo: `KAWPOW`
-GPU: `NVIDIA RTX 3060`
-Duration: `10 minutes`
+OS: `LINUX`<br>
+Algo: `KAWPOW`<br>
+GPU: `NVIDIA RTX 3060`<br>
+Duration: `10 minutes`<br>
 Share found:
 | T-REX | PICKMINER | BZMINER | SRBMINER | GMINER |
 | :---: | :-------: | :-----: | :------: | :----: |
