@@ -35,6 +35,9 @@ class GPUMiner:
             else:
                 self.folder_extracted = os.path.join(self.folder_extracted,
                                                      f'pickminer_{self.version}')
+        elif self.name == 'teamredminer':
+            self.folder_extracted = os.path.join(self.folder_extracted,
+                                                 f'teamredminer-v{self.version}-{"win" if os.name == "nt" else "linux"}')
 
     def is_running(self) -> bool:
         try:
@@ -119,11 +122,22 @@ class GPUMiner:
 
     def run(self, stratum: Stratum, show_stdout: bool):
         exe = f'{"./" if os.name != "nt" else ""}{self.exe}{".exe" if os.name == "nt" else ""}'
+
+        params_args = self.get_args()
+        if '<HOST>' not in params_args:
+            print(f'<HOST> not found !')
+            return
+        if '<PORT>' not in params_args:
+            print(f'<PORT> not found !')
+            return
+
         parameters = self.get_args() \
             .replace('<HOST>', stratum.get_host()) \
             .replace('<PORT>', str(stratum.get_port()))
 
         cmd = f'cd {self.get_folder_extracted()} && {exe} {parameters}'
+
+        print(cmd)
 
         self.running = True
         local_fd = self.__get_fd(show_stdout)
