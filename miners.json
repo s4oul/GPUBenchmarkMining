@@ -26,7 +26,7 @@
         "kawpow": "-a kawpow",
         "autolykos2": "-a autolykos2"
       },
-      "args": "-a kawpow -o stratum+tcp://<HOST>:<PORT> -u <WALLET>.s4oulBenchmark -p x"
+      "args": "-o stratum+tcp://<HOST>:<PORT> -u <WALLET>.s4oulBenchmark -p x"
     },
     {
       "name": "pickminer",
@@ -38,7 +38,7 @@
         "kawpow": "--coin=RVN",
         "autolykos2": "--coin=ERGO"
       },
-      "args": "--coin=RVN --host=<HOST> --port=<PORT> --wallet=<WALLET> --workername=s4oulWnd --opti_ui=true"
+      "args": "--host=<HOST> --port=<PORT> --wallet=<WALLET> --workername=s4oulWnd --opti_ui=true"
     },
     {
       "name": "bzminer",
@@ -50,7 +50,7 @@
         "kawpow": "-a rvn",
         "autolykos2": "-a ergo"
       },
-      "args": "-a rvn -w <WALLET> -p stratum+tcp://<HOST>:<PORT> --nc 1 -r s4oulBenchmark"
+      "args": "-w <WALLET> -p stratum+tcp://<HOST>:<PORT> --nc 1 -r s4oulBenchmark"
     },
     {
       "name": "srbminer",
