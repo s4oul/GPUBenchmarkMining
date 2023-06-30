@@ -1,6 +1,6 @@
 {
   "delay": 5,
-  "subscribe": "c797a5",
+  "extra_nonce": "c797a5",
   "set_target": "00000004c5adf9601f294e237e477a16da83737a977a9898ed5f5fe6ad94fdd8",
   "notify":
   [

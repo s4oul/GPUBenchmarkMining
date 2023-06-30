@@ -53,10 +53,12 @@ try:
         miner_json = json.load(fd)
         # Check mandatory keys
         if 'miners' not in miner_json:
-            print('Bad config file')
+            print('Bad config file, missing [miners]')
+        if 'wallets' not in miner_json:
+            print('Bad config file, missing [wallets]')
         # Loads all miners from config file
         for miner in miner_json['miners']:
-            gpu_miner = GPUMiner(miner)
+            gpu_miner = GPUMiner(miner, miner_json['wallets'][args.algo])
             if gpu_miner.download() is True:
                 miners.append(gpu_miner)
             else:
@@ -75,7 +77,7 @@ for miner in miners:
     shares.add_miner(miner.get_name())
     bench = Benchmark(args.mining_duration, miner, stratum_client)
     stratum_client.start(miner, shares)
-    bench.run(args.show_mining_output)
+    bench.run(args.algo, args.show_mining_output)
     stratum_client.close()
 
 shares.draw_graph()
