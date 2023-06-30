@@ -1,4 +1,8 @@
 {
+  "wallets": {
+    "kawpow": "RLamW5oHdNKixUQossfcMWohLRKyGRr2PV",
+    "autolykos2": "9grk85QYJeHwitqArqnoBst8m7hbMCH3V2cJxXfoLxB7e3bQFQ5"
+  },
   "miners": [
     {
       "name": "teamredminer",
@@ -6,7 +10,11 @@
       "url_win": "https://github.com/todxx/teamredminer/releases/download/v<VERSION>/teamredminer-v<VERSION>-win.zip",
       "url_linux": "https://github.com/todxx/teamredminer/releases/download/v<VERSION>/teamredminer-v<VERSION>-linux.tgz",
       "exe": "teamredminer",
-      "args": "-a kawpow -o stratum+tcp://<HOST>:<PORT> -u RLamW5oHdNKixUQossfcMWohLRKyGRr2PV.s4oulBenchmark -p x"
+      "algos": {
+        "kawpow": "-a kawpow",
+        "autolykos2": "-a autolykos2"
+      },
+      "args": "-o stratum+tcp://<HOST>:<PORT> -u <WALLET>.s4oulBenchmark -p x"
     },
     {
       "name": "t_rex",
@@ -14,7 +22,11 @@
       "url_win": "https://github.com/trexminer/T-Rex/releases/download/<VERSION>/t-rex-<VERSION>-win.zip",
       "url_linux": "https://github.com/trexminer/T-Rex/releases/download/<VERSION>/t-rex-<VERSION>-linux.tar.gz",
       "exe": "t-rex",
-      "args": "-a kawpow -o stratum+tcp://<HOST>:<PORT> -u RLamW5oHdNKixUQossfcMWohLRKyGRr2PV.s4oulBenchmark -p x"
+      "algos": {
+        "kawpow": "-a kawpow",
+        "autolykos2": "-a autolykos2"
+      },
+      "args": "-a kawpow -o stratum+tcp://<HOST>:<PORT> -u <WALLET>.s4oulBenchmark -p x"
     },
     {
       "name": "pickminer",
@@ -22,7 +34,11 @@
       "url_win": "https://github.com/Pickminer/Pickminer/releases/download/v<VERSION>/pickminer_setup_<VERSION>.exe",
       "url_linux": "https://github.com/Pickminer/Pickminer/releases/download/v<VERSION>/pickminer_<VERSION>_ubuntu_22_04.tar.gz",
       "exe": "pickminer",
-      "args": "--coin=RVN --host=<HOST> --port=<PORT> --wallet=RLamW5oHdNKixUQossfcMWohLRKyGRr2PV --workername=s4oulWnd --opti_ui=true"
+      "algos": {
+        "kawpow": "--coin=RVN",
+        "autolykos2": "--coin=ERGO"
+      },
+      "args": "--coin=RVN --host=<HOST> --port=<PORT> --wallet=<WALLET> --workername=s4oulWnd --opti_ui=true"
     },
     {
       "name": "bzminer",
@@ -30,7 +46,11 @@
       "url_win": "https://github.com/bzminer/bzminer/releases/download/v<VERSION>/bzminer_v<VERSION>_windows.zip",
       "url_linux": "https://github.com/bzminer/bzminer/releases/download/v<VERSION>/bzminer_v<VERSION>_linux.tar.gz",
       "exe": "bzminer",
-      "args": "-a rvn -w RLamW5oHdNKixUQossfcMWohLRKyGRr2PV -p stratum+tcp://<HOST>:<PORT> --nc 1 -r s4oulBenchmark"
+      "algos": {
+        "kawpow": "-a rvn",
+        "autolykos2": "-a ergo"
+      },
+      "args": "-a rvn -w <WALLET> -p stratum+tcp://<HOST>:<PORT> --nc 1 -r s4oulBenchmark"
     },
     {
       "name": "srbminer",
@@ -38,7 +58,11 @@
       "url_win": "https://github.com/doktor83/SRBMiner-Multi/releases/download/<VERSION>/SRBMiner-Multi-2-2-9-win64.zip",
       "url_linux": "https://github.com/doktor83/SRBMiner-Multi/releases/download/<VERSION>/SRBMiner-Multi-2-2-9-Linux.tar.xz",
       "exe": "SRBMiner-MULTI",
-      "args": "--disable-cpu --algorithm kawpow --pool <HOST>:<PORT> --wallet RLamW5oHdNKixUQossfcMWohLRKyGRr2PV --gpu-boost 100 --worker s4oulBenchmark"
+      "algos": {
+        "kawpow": "--algorithm kawpow",
+        "autolykos2": "--algorithm autolykos2"
+      },
+      "args": "--disable-cpu --pool <HOST>:<PORT> --wallet <WALLET> --gpu-boost 100 --worker s4oulBenchmark"
     },
     {
       "name": "gminer",
@@ -46,7 +70,11 @@
       "url_win": "https://github.com/develsoftware/GMinerRelease/releases/download/<VERSION>/gminer_<VERSION>_windows64.zip",
       "url_linux": "https://github.com/develsoftware/GMinerRelease/releases/download/<VERSION>/gminer_<VERSION>_linux64.tar.xz",
       "exe": "miner",
-      "args": "--algo kawpow --server <HOST>:<PORT> --user RLamW5oHdNKixUQossfcMWohLRKyGRr2PV.s4oulBenchmark --fan 80"
+      "algos": {
+        "kawpow": "--algo kawpow",
+        "autolykos2": "--algo autolykos2"
+      },
+      "args": "--server <HOST>:<PORT> --user <WALLET>.s4oulBenchmark --fan 80"
     }
   ]
 }

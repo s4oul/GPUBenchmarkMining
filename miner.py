@@ -10,7 +10,7 @@ from stratum import Stratum
 
 class GPUMiner:
 
-    def __init__(self, json_data: dict):
+    def __init__(self, json_data: dict, wallet: str):
         self.running = False
         self.share = 0
         self.process = None
@@ -19,7 +19,9 @@ class GPUMiner:
         self.url_win = json_data['url_win']
         self.url_linux = json_data['url_linux']
         self.exe = json_data['exe']
+        self.algos = json_data['algos']
         self.args = json_data['args']
+        self.wallet = wallet
         self.folder_extracted = os.path.join('miners', f'{self.name}_{self.version}', 'extracted')
         self.fd = None
 
@@ -53,8 +55,14 @@ class GPUMiner:
     def get_url(self) -> str:
         return self.url_win if os.name == 'nt' else self.url_linux
 
+    def get_algos(self, algo_name) -> str:
+        return self.algos[algo_name]
+
     def get_args(self) -> str:
         return self.args
+
+    def get_wallet(self) -> str:
+        return self.wallet
 
     def get_version(self) -> str:
         return self.version
@@ -132,7 +140,7 @@ class GPUMiner:
 
         return local_fd
 
-    def run(self, stratum: Stratum, show_stdout: bool):
+    def run(self, stratum: Stratum, algo_name: str, show_stdout: bool):
         exe = f'{"./" if os.name != "nt" else ""}{self.exe}{".exe" if os.name == "nt" else ""}'
 
         params_args = self.get_args()
@@ -142,14 +150,18 @@ class GPUMiner:
         if '<PORT>' not in params_args:
             print(f'<PORT> not found !')
             return
+        if '<WALLET>' not in params_args:
+            print(f'<WALLET> not found !')
+            return
 
         parameters = self.get_args() \
             .replace('<HOST>', stratum.get_host()) \
-            .replace('<PORT>', str(stratum.get_port()))
+            .replace('<PORT>', str(stratum.get_port()))\
+            .replace('<WALLET>', self.get_wallet())
 
-        cmd = f'cd {self.get_folder_extracted()} && {exe} {parameters}'
+        cmd_algo = self.get_algos(algo_name)
 
-        print(cmd)
+        cmd = f'cd {self.get_folder_extracted()} && {exe} {cmd_algo} {parameters}'
 
         self.running = True
         local_fd = self.__get_fd(show_stdout)
