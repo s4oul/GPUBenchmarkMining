@@ -70,7 +70,19 @@ class GPUMiner:
             print(f'Downloading {self.get_name()}')
             print(f'\tVersion: {self.get_version()}')
             print(f'\tFolder: {self.get_folder_extracted()}')
-            print(f'\tURL: {self.get_url()}')
+
+            url = self.get_url()
+            if self.get_name() == 'srbminer':
+                url = url\
+                    .replace('download/<VERSION>', f'download/{self.get_version()}')\
+                    .replace('<VERSION>', self.get_version().replace('.', '_'))
+            elif self.get_name() == 'gminer':
+                url = url\
+                    .replace('download/<VERSION>', f'download/{self.get_version()}')\
+                    .replace('<VERSION>', self.get_version().replace('.', '_'))
+            else:
+                url = url.replace('<VERSION>', self.get_version())
+            print(f'\tURL: {url}')
 
             folder_miner = os.path.join('miners', f'{self.name}_{self.version}')
             if os.path.exists(folder_miner):
@@ -89,7 +101,7 @@ class GPUMiner:
             import ssl
             ssl._create_default_https_context = ssl._create_unverified_context
 
-            output_file, _ = urllib.request.urlretrieve(self.get_url(), miner_package)
+            output_file, _ = urllib.request.urlretrieve(url, miner_package)
             print(f'\tOutput: {output_file}')
             if os.name == 'nt':
                 if self.name == 'pickminer':
