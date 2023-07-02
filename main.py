@@ -30,6 +30,10 @@ parser.add_argument('--mining_duration',
                     default=20,
                     type=int,
                     help="Minutes")
+parser.add_argument('--device_type',
+                    default='both',
+                    type=str,
+                    help="[both, amd, nvidia]")
 
 parser.add_argument('--show_mining_output', action='store_false')
 parser.add_argument('--no_show_mining_output', dest='show_mining_output', action='store_false')
@@ -51,14 +55,43 @@ if Algorithm.is_valid(args.algo) is False:
 try:
     with open('miners.json') as fd:
         miner_json = json.load(fd)
+
         # Check mandatory keys
         if 'miners' not in miner_json:
-            print('Bad config file, missing [miners]')
+            sys.exit('Bad config file, missing [miners]')
         if 'wallets' not in miner_json:
-            print('Bad config file, missing [wallets]')
+            sys.exit('Bad config file, missing [wallets]')
+        if 'miner_device_available' not in miner_json:
+            sys.exit('Bad config file, missing [miner_device_available]')
+        if 'miner_algo' not in miner_json:
+            sys.exit('Bad config file, missing [miner_algo]')
+
         # Loads all miners from config file
         for miner in miner_json['miners']:
             gpu_miner = GPUMiner(miner, miner_json['wallets'][args.algo])
+            gpu_miner_name = gpu_miner.get_name()
+
+            # Check if the miner software is compatible with device in rig.
+            device_in_amd = True if gpu_miner_name in miner_json['miner_device_available']['amd'] else False
+            device_in_nvidia = True if gpu_miner_name in miner_json['miner_device_available']['nvidia'] else False
+            if args.device_type == 'both':
+                if device_in_amd is False or device_in_nvidia is False:
+                    continue
+            elif args.device_type == 'amd':
+                if device_in_amd is False:
+                    continue
+            elif args.device_type == 'nvidia':
+                if device_in_nvidia is False:
+                    continue
+
+            # Check if the miner software is compatible with algorithm
+
+            device_in_algo = True if gpu_miner_name in miner_json['miner_algo'][args.algo] else False
+            if device_in_algo is False:
+                continue
+
+            print(f'Miner Available {gpu_miner.get_name()}')
+
             if gpu_miner.download() is True:
                 miners.append(gpu_miner)
             else:
