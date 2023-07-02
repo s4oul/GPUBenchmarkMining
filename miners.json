@@ -1,4 +1,38 @@
 {
+  "miner_device_available": {
+    "amd": [
+      "teamreadminer",
+      "pickminer",
+      "bzminer",
+      "srbminer",
+      "gminer"
+    ],
+    "nvidia": [
+      "t_rex",
+      "pickminer",
+      "bzminer",
+      "srbminer",
+      "gminer"
+    ]
+  },
+  "miner_algo": {
+    "kawpow": [
+      "teamreadminer",
+      "t_rex",
+      "pickminer",
+      "bzminer",
+      "srbminer",
+      "gminer"
+    ],
+    "autolykos2": [
+      "teamreadminer",
+      "t_rex",
+      "pickminer",
+      "bzminer",
+      "srbminer",
+      "gminer"
+    ]
+  },
   "wallets": {
     "kawpow": "RLamW5oHdNKixUQossfcMWohLRKyGRr2PV",
     "autolykos2": "9grk85QYJeHwitqArqnoBst8m7hbMCH3V2cJxXfoLxB7e3bQFQ5"
