@@ -40,6 +40,12 @@ class GPUMiner:
         elif self.name == 'teamredminer':
             self.folder_extracted = os.path.join(self.folder_extracted,
                                                  f'teamredminer-v{self.version}-{"win" if os.name == "nt" else "linux"}')
+        elif self.name == 'lolminer':
+            self.folder_extracted = os.path.join(self.folder_extracted,
+                                                 f'{self.version}')
+        elif self.name == "nbminer":
+            self.folder_extracted = os.path.join(self.folder_extracted,
+                                                 f'NBMiner_{"Win" if os.name == "nt" else "Linux"}')
 
     def is_running(self) -> bool:
         try:
