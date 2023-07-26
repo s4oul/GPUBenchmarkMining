@@ -7,15 +7,16 @@
       "srbminer",
       "gminer",
       "lolminer",
+      "srbminer",
       "nbminer"
     ],
     "nvidia": [
       "t_rex",
       "pickminer",
       "bzminer",
-      "srbminer",
       "gminer",
       "lolminer",
+      "srbminer",
       "nbminer"
     ]
   },
@@ -25,8 +26,16 @@
       "t_rex",
       "pickminer",
       "bzminer",
-      "srbminer",
       "gminer",
+      "srbminer",
+      "nbminer"
+    ],
+    "firopow": [
+      "teamreadminer",
+      "t_rex",
+      "pickminer",
+      "gminer",
+      "srbminer",
       "nbminer"
     ],
     "autolykos2": [
@@ -42,6 +51,7 @@
   },
   "wallets": {
     "kawpow": "RLamW5oHdNKixUQossfcMWohLRKyGRr2PV",
+    "firopow": "aAPZm8Ykdpz8BvnWEmCLUoXU9i5uuKWmH8",
     "autolykos2": "9grk85QYJeHwitqArqnoBst8m7hbMCH3V2cJxXfoLxB7e3bQFQ5"
   },
   "miners": [
@@ -53,6 +63,7 @@
       "exe": "teamredminer",
       "algos": {
         "kawpow": "-a kawpow",
+        "firopow": "-a mtp_firopow",
         "autolykos2": "-a autolykos2"
       },
       "args": "-o stratum+tcp://<HOST>:<PORT> -u <WALLET>.s4oulBenchmark -p x"
@@ -65,6 +76,7 @@
       "exe": "t-rex",
       "algos": {
         "kawpow": "-a kawpow",
+        "firopow": "-a firopow",
         "autolykos2": "-a autolykos2"
       },
       "args": "-o stratum+tcp://<HOST>:<PORT> -u <WALLET>.s4oulBenchmark -p x"
@@ -77,6 +89,7 @@
       "exe": "pickminer",
       "algos": {
         "kawpow": "--coin=RVN",
+        "firopow": "--coin=FIRO",
         "autolykos2": "--coin=ERGO"
       },
       "args": "--host=<HOST> --port=<PORT> --wallet=<WALLET> --workername=s4oulWnd --opti_ui=true"
@@ -89,6 +102,7 @@
       "exe": "bzminer",
       "algos": {
         "kawpow": "-a rvn",
+        "firopow": "",
         "autolykos2": "-a ergo"
       },
       "args": "-w <WALLET> -p stratum+tcp://<HOST>:<PORT> --nc 1 -r s4oulBenchmark"
@@ -101,6 +115,7 @@
       "exe": "miner",
       "algos": {
         "kawpow": "--algo kawpow",
+        "firopow": "--algo firo",
         "autolykos2": "--algo autolykos2"
       },
       "args": "--server <HOST>:<PORT> --user <WALLET>.s4oulBenchmark --fan 80"
@@ -113,6 +128,7 @@
       "exe": "lolMiner",
       "algos": {
         "kawpow": "",
+        "firopow": "",
         "autolykos2": "--algo AUTOLYKOS2"
       },
       "args": "--user <WALLET> --pool <HOST>:<PORT> --nocolor"
@@ -125,6 +141,7 @@
       "exe": "SRBMiner-MULTI",
       "algos": {
         "kawpow": "--algorithm kawpow",
+        "firopow": "--algorithm firopow",
         "autolykos2": "--algorithm autolykos2"
       },
       "args": "--disable-cpu --pool <HOST>:<PORT> --wallet <WALLET> --gpu-boost 100 --worker s4oulBenchmark"
@@ -137,6 +154,7 @@
       "exe": "nbminer",
       "algos": {
         "kawpow": "-a kawpow",
+        "firopow": "",
         "autolykos2": "-a ergo"
       },
       "args": "--user <WALLET> stratum+tcp://<HOST>:<PORT>"

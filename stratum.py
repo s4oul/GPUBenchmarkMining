@@ -144,6 +144,8 @@ class Stratum:
         try:
             if self.algo == Algorithm.KAWPOW:
                 self.__dispatch_kawpow(client, data)
+            elif self.algo == Algorithm.FIROPOW:
+                self.__dispatch_firopow(client, data)
             elif self.algo == Algorithm.AUTOLYKOS2:
                 self.__dispatch_autolykos_v2(client, data)
         except Exception as error:
@@ -174,6 +176,47 @@ class Stratum:
                      '"id":null,' \
                      '"method":"mining.set_target",' \
                      f'"params":["{target}"]'\
+                     '}'
+            self.send(client, result)
+
+            self.thread_notify = threading.Thread(target=self.__loop_notify, args=[client])
+            self.thread_notify.start()
+        elif 'mining.submit' == method:
+            now = datetime.datetime.now()
+            elapsed = now - self.chrono_start
+            self.miner.increase_share()
+            count = self.miner.get_shares()
+            print(f'{datetime.datetime.now()} shares count [{count}], time elapsed [{elapsed}].')
+            self.shares.add_share(self.miner.get_name(),
+                                  int(elapsed.total_seconds()),
+                                  data['params'][2])
+            response = '{"id":-1,"result":true,"error":null}'
+            response = response.replace('-1', str(data["id"]))
+            self.send(client, response)
+        elif 'mining.extranonce.subscribe' == method:
+            pass
+        elif 'eth_submitHashrate' == method:
+            pass
+        else:
+            print(f'Unknow method [{method}]!')
+
+    def __dispatch_firopow(self, client, data: dict):
+        method = data['method']
+        if 'mining.subscribe' == method:
+            request_id = data['id']
+            extra_nonce = self.jobs['extra_nonce']
+            result = '{'\
+                     f'"id":{request_id}, ' \
+                     f'"result":["{extra_nonce}", "{extra_nonce}"], ' \
+                     f'"error":null' \
+                     '}'
+            self.send(client, result)
+        elif 'mining.authorize' == method:
+            id = data['id']
+            result = '{'\
+                     f'"id":{id},' \
+                     f'"result":true,' \
+                     f'"error":null'\
                      '}'
             self.send(client, result)
 
