@@ -25,7 +25,7 @@ parser.add_argument('--port',
 parser.add_argument('--algo',
                     default='kawpow',
                     type=str,
-                    help="[kawpow]")
+                    help="[kawpow, autolykos2]")
 parser.add_argument('--mining_duration',
                     default=20,
                     type=int,
@@ -89,8 +89,6 @@ try:
             device_in_algo = True if gpu_miner_name in miner_json['miner_algo'][args.algo] else False
             if device_in_algo is False:
                 continue
-
-            print(f'Miner Available {gpu_miner.get_name()}')
 
             if gpu_miner.download() is True:
                 miners.append(gpu_miner)

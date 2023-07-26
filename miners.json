@@ -5,14 +5,18 @@
       "pickminer",
       "bzminer",
       "srbminer",
-      "gminer"
+      "gminer",
+      "lolminer",
+      "nbminer"
     ],
     "nvidia": [
       "t_rex",
       "pickminer",
       "bzminer",
       "srbminer",
-      "gminer"
+      "gminer",
+      "lolminer",
+      "nbminer"
     ]
   },
   "miner_algo": {
@@ -22,7 +26,8 @@
       "pickminer",
       "bzminer",
       "srbminer",
-      "gminer"
+      "gminer",
+      "nbminer"
     ],
     "autolykos2": [
       "teamreadminer",
@@ -30,7 +35,9 @@
       "pickminer",
       "bzminer",
       "srbminer",
-      "gminer"
+      "gminer",
+      "lolminer",
+      "nbminer"
     ]
   },
   "wallets": {
@@ -87,6 +94,30 @@
       "args": "-w <WALLET> -p stratum+tcp://<HOST>:<PORT> --nc 1 -r s4oulBenchmark"
     },
     {
+      "name": "gminer",
+      "version": "3.40",
+      "url_win": "https://github.com/develsoftware/GMinerRelease/releases/download/<VERSION>/gminer_<VERSION>_windows64.zip",
+      "url_linux": "https://github.com/develsoftware/GMinerRelease/releases/download/<VERSION>/gminer_<VERSION>_linux64.tar.xz",
+      "exe": "miner",
+      "algos": {
+        "kawpow": "--algo kawpow",
+        "autolykos2": "--algo autolykos2"
+      },
+      "args": "--server <HOST>:<PORT> --user <WALLET>.s4oulBenchmark --fan 80"
+    },
+    {
+      "name": "lolminer",
+      "version": "1.76a",
+      "url_win": "https://github.com/Lolliedieb/lolMiner-releases/releases/download/<VERSION>/lolMiner_v<VERSION>_Win64.zip",
+      "url_linux": "https://github.com/Lolliedieb/lolMiner-releases/releases/download/<VERSION>/lolMiner_v<VERSION>_Lin64.tar.gz",
+      "exe": "lolMiner",
+      "algos": {
+        "kawpow": "",
+        "autolykos2": "--algo AUTOLYKOS2"
+      },
+      "args": "--user <WALLET> --pool <HOST>:<PORT> --nocolor"
+    },
+    {
       "name": "srbminer",
       "version": "2.2.9",
       "url_win": "https://github.com/doktor83/SRBMiner-Multi/releases/download/<VERSION>/SRBMiner-Multi-2-2-9-win64.zip",
@@ -99,16 +130,16 @@
       "args": "--disable-cpu --pool <HOST>:<PORT> --wallet <WALLET> --gpu-boost 100 --worker s4oulBenchmark"
     },
     {
-      "name": "gminer",
-      "version": "3.40",
-      "url_win": "https://github.com/develsoftware/GMinerRelease/releases/download/<VERSION>/gminer_<VERSION>_windows64.zip",
-      "url_linux": "https://github.com/develsoftware/GMinerRelease/releases/download/<VERSION>/gminer_<VERSION>_linux64.tar.xz",
-      "exe": "miner",
+      "name": "nbminer",
+      "version": "42.3",
+      "url_win": "https://github.com/NebuTech/NBMiner/releases/download/v<VERSION>/NBMiner_<VERSION>_Win.zip",
+      "url_linux": "https://github.com/NebuTech/NBMiner/releases/download/v<VERSION>/NBMiner_<VERSION>_Linux.zip",
+      "exe": "nbminer",
       "algos": {
-        "kawpow": "--algo kawpow",
-        "autolykos2": "--algo autolykos2"
+        "kawpow": "-a kawpow",
+        "autolykos2": "-a ergo"
       },
-      "args": "--server <HOST>:<PORT> --user <WALLET>.s4oulBenchmark --fan 80"
+      "args": "--user <WALLET> stratum+tcp://<HOST>:<PORT>"
     }
   ]
 }
