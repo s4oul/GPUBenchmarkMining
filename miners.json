@@ -94,18 +94,6 @@
       "args": "-w <WALLET> -p stratum+tcp://<HOST>:<PORT> --nc 1 -r s4oulBenchmark"
     },
     {
-      "name": "srbminer",
-      "version": "2.2.9",
-      "url_win": "https://github.com/doktor83/SRBMiner-Multi/releases/download/<VERSION>/SRBMiner-Multi-2-2-9-win64.zip",
-      "url_linux": "https://github.com/doktor83/SRBMiner-Multi/releases/download/<VERSION>/SRBMiner-Multi-2-2-9-Linux.tar.xz",
-      "exe": "SRBMiner-MULTI",
-      "algos": {
-        "kawpow": "--algorithm kawpow",
-        "autolykos2": "--algorithm autolykos2"
-      },
-      "args": "--disable-cpu --pool <HOST>:<PORT> --wallet <WALLET> --gpu-boost 100 --worker s4oulBenchmark"
-    },
-    {
       "name": "gminer",
       "version": "3.40",
       "url_win": "https://github.com/develsoftware/GMinerRelease/releases/download/<VERSION>/gminer_<VERSION>_windows64.zip",
@@ -129,7 +117,19 @@
       },
       "args": "--user <WALLET> --pool <HOST>:<PORT> --nocolor"
     },
-   {
+    {
+      "name": "srbminer",
+      "version": "2.2.9",
+      "url_win": "https://github.com/doktor83/SRBMiner-Multi/releases/download/<VERSION>/SRBMiner-Multi-2-2-9-win64.zip",
+      "url_linux": "https://github.com/doktor83/SRBMiner-Multi/releases/download/<VERSION>/SRBMiner-Multi-2-2-9-Linux.tar.xz",
+      "exe": "SRBMiner-MULTI",
+      "algos": {
+        "kawpow": "--algorithm kawpow",
+        "autolykos2": "--algorithm autolykos2"
+      },
+      "args": "--disable-cpu --pool <HOST>:<PORT> --wallet <WALLET> --gpu-boost 100 --worker s4oulBenchmark"
+    },
+    {
       "name": "nbminer",
       "version": "42.3",
       "url_win": "https://github.com/NebuTech/NBMiner/releases/download/v<VERSION>/NBMiner_<VERSION>_Win.zip",
