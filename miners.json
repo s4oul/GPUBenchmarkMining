@@ -47,12 +47,23 @@
       "gminer",
       "lolminer",
       "nbminer"
+    ],
+    "ethpow": [
+      "teamreadminer",
+      "t_rex",
+      "pickminer",
+      "bzminer",
+      "srbminer",
+      "gminer",
+      "lolminer",
+      "nbminer"
     ]
   },
   "wallets": {
     "kawpow": "RLamW5oHdNKixUQossfcMWohLRKyGRr2PV",
     "firopow": "aAPZm8Ykdpz8BvnWEmCLUoXU9i5uuKWmH8",
-    "autolykos2": "9grk85QYJeHwitqArqnoBst8m7hbMCH3V2cJxXfoLxB7e3bQFQ5"
+    "autolykos2": "9grk85QYJeHwitqArqnoBst8m7hbMCH3V2cJxXfoLxB7e3bQFQ5",
+    "ethpow": "0x010652339f2d8d95e803EDc41Eb3ade7ACc8C74F"
   },
   "miners": [
     {
@@ -64,7 +75,8 @@
       "algos": {
         "kawpow": "-a kawpow",
         "firopow": "-a mtp_firopow",
-        "autolykos2": "-a autolykos2"
+        "autolykos2": "-a autolykos2",
+        "ethpow": "-a ethash"
       },
       "args": "-o stratum+tcp://<HOST>:<PORT> -u <WALLET>.s4oulBenchmark -p x"
     },
@@ -77,7 +89,8 @@
       "algos": {
         "kawpow": "-a kawpow",
         "firopow": "-a firopow",
-        "autolykos2": "-a autolykos2"
+        "autolykos2": "-a autolykos2",
+        "ethpow": "-a ethash"
       },
       "args": "-o stratum+tcp://<HOST>:<PORT> -u <WALLET>.s4oulBenchmark -p x"
     },
@@ -90,7 +103,8 @@
       "algos": {
         "kawpow": "--coin=RVN",
         "firopow": "--coin=FIRO",
-        "autolykos2": "--coin=ERGO"
+        "autolykos2": "--coin=ERGO",
+        "ethpow": "--coin=ETHW"
       },
       "args": "--host=<HOST> --port=<PORT> --wallet=<WALLET> --workername=s4oulWnd --opti_ui=true"
     },
@@ -103,7 +117,8 @@
       "algos": {
         "kawpow": "-a rvn",
         "firopow": "",
-        "autolykos2": "-a ergo"
+        "autolykos2": "-a ergo",
+        "ethpow": "-a ethw"
       },
       "args": "-w <WALLET> -p stratum+tcp://<HOST>:<PORT> --nc 1 -r s4oulBenchmark"
     },
@@ -116,7 +131,8 @@
       "algos": {
         "kawpow": "--algo kawpow",
         "firopow": "--algo firo",
-        "autolykos2": "--algo autolykos2"
+        "autolykos2": "--algo autolykos2",
+        "ethpow": "--algo ethash"
       },
       "args": "--server <HOST>:<PORT> --user <WALLET>.s4oulBenchmark --fan 80"
     },
@@ -129,7 +145,8 @@
       "algos": {
         "kawpow": "",
         "firopow": "",
-        "autolykos2": "--algo AUTOLYKOS2"
+        "autolykos2": "--algo AUTOLYKOS2",
+        "ethpow": "--algo ETHASH"
       },
       "args": "--user <WALLET> --pool <HOST>:<PORT> --nocolor"
     },
@@ -142,7 +159,8 @@
       "algos": {
         "kawpow": "--algorithm kawpow",
         "firopow": "--algorithm firopow",
-        "autolykos2": "--algorithm autolykos2"
+        "autolykos2": "--algorithm autolykos2",
+        "ethpow": "--algorithm ethash"
       },
       "args": "--disable-cpu --pool <HOST>:<PORT> --wallet <WALLET> --gpu-boost 100 --worker s4oulBenchmark"
     },
@@ -155,7 +173,8 @@
       "algos": {
         "kawpow": "-a kawpow",
         "firopow": "",
-        "autolykos2": "-a ergo"
+        "autolykos2": "-a ergo",
+        "ethpow": "-a ethash"
       },
       "args": "--user <WALLET> stratum+tcp://<HOST>:<PORT>"
     }

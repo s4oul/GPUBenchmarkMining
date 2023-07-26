@@ -165,6 +165,9 @@ class GPUMiner:
             .replace('<PORT>', str(stratum.get_port()))\
             .replace('<WALLET>', self.get_wallet())
 
+        if self.name == 't_rex':
+            parameters = parameters.replace('stratum', 'stratum2')
+
         cmd_algo = self.get_algos(algo_name)
 
         cmd = f'cd {self.get_folder_extracted()} && {exe} {cmd_algo} {parameters}'
