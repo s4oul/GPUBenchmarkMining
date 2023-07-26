@@ -2,8 +2,7 @@
   "delay": 180,
   "extra_nonce": "90eb",
   "difficulty": 0,
-  "notify":
-  [
+  "notify": [
     {
       "params": [
         "2ff7",
