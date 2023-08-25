@@ -1,6 +1,7 @@
 import os.path
 import threading
 import time
+import logging
 
 from miner import GPUMiner
 from stratum import Stratum
@@ -14,21 +15,17 @@ class Benchmark:
         self.thread = None
         self.stratum = stratum
 
-    def __async_run(self, algo_name: str, show_stdout: bool):
-        self.miner.run(self.stratum, algo_name, show_stdout)
+    def __async_run(self, algo_name: str):
+        self.miner.run(self.stratum, algo_name)
         timeout = self.duration_bench
         while self.miner.is_running() is True and timeout > 0:
             time.sleep(1)
             timeout -= 1
         self.miner.kill()
 
-    def run(self, algo_name: str, show_stdout: bool):
-        print(f'Running miner [{self.miner.get_name()}]')
+    def run(self, algo_name: str):
+        logging.info(f'Running miner [{self.miner.get_name()}]')
 
-        result_output = os.path.join('results')
-        if os.path.exists(result_output) is False:
-            os.makedirs(result_output)
-
-        self.thread = threading.Thread(target=self.__async_run, args=[algo_name, show_stdout])
+        self.thread = threading.Thread(target=self.__async_run, args=[algo_name])
         self.thread.start()
         self.thread.join()

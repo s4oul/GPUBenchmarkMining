@@ -1,4 +1,6 @@
+import logging
 import os
+import logging
 
 import datetime
 
@@ -85,7 +87,7 @@ class Share:
         if os.path.exists(base_folder) is False:
             os.makedirs(base_folder)
         filename = os.path.join(base_folder, f'{title}.png')
-        print(f'Wiring Graph ===> {filename}')
+        logging.info(f'Wiring Graph ===> {filename}')
         if os.path.exists(filename):
             os.remove(filename)
         graph.savefig(filename)

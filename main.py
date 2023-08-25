@@ -2,6 +2,8 @@ import sys
 import argparse
 import json
 import os
+import logging
+
 from algorithm import Algorithm
 from benchmark import Benchmark
 from miner import GPUMiner
@@ -11,6 +13,13 @@ from share import Share
 # Global Variables
 miners = []
 shares = Share()
+
+log_level = logging.INFO
+logging.basicConfig(
+    format='[%(levelname)s][%(asctime)s]: %(message)s',
+    datefmt='%m/%d/%Y %I:%M:%S %p',
+    encoding='utf-8',
+    level=log_level)
 
 # Arguments
 parser = argparse.ArgumentParser(description='')
@@ -35,17 +44,14 @@ parser.add_argument('--device_type',
                     type=str,
                     help="[both, amd, nvidia]")
 
-parser.add_argument('--show_mining_output', action='store_false')
-parser.add_argument('--no_show_mining_output', dest='show_mining_output', action='store_false')
-parser.set_defaults(feature=True)
-
 args = parser.parse_args()
 
-print('BENCHMARK GPU MINING')
-print(f'\tHost: {args.host}')
-print(f'\tPort: {args.port}')
-print(f'\tAlgorithm: {args.algo}')
-print(f'\tDuration: {args.mining_duration}min')
+
+logging.info('BENCHMARK GPU MINING')
+logging.info(f'\tHost: {args.host}')
+logging.info(f'\tPort: {args.port}')
+logging.info(f'\tAlgorithm: {args.algo}')
+logging.info(f'\tDuration: {args.mining_duration}min')
 
 
 # Check algorithm
@@ -93,7 +99,7 @@ try:
             if gpu_miner.download() is True:
                 miners.append(gpu_miner)
             else:
-                print(f'Skip miner {gpu_miner.get_name()}!')
+                logging.warning(f'Skip miner {gpu_miner.get_name()}!')
 except Exception as error:
     sys.exit(f'Stop benchmark ! {error}')
 
@@ -103,19 +109,23 @@ stratum_client = Stratum(args.algo, args.host, args.port)
 if stratum_client.load_jobs() is False:
     sys.exit('Jobs not found !')
 
+result_output = os.path.join('results')
+if os.path.exists(result_output) is False:
+    os.makedirs(result_output)
+
 # Run benchmark
 for miner in miners:
     shares.add_miner(miner.get_name())
     bench = Benchmark(args.mining_duration, miner, stratum_client)
     stratum_client.start(miner, shares)
-    bench.run(args.algo, args.show_mining_output)
+    bench.run(args.algo)
     stratum_client.close()
 
 shares.draw_graph()
 
 with open(os.path.join('results', 'result_benchmark.log'), 'w') as fd:
     for miner in miners:
-        print(f'Miner {miner.get_name()} found {miner.get_shares()} shares.')
+        logging.info(f'Miner {miner.get_name()} found {miner.get_shares()} shares.')
         fd.write(f'Miner {miner.get_name()} found {miner.get_shares()} shares.\n')
 
-print('Benchmark finished!')
+logging.info('Benchmark finished!')
