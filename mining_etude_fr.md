@@ -4,30 +4,25 @@ Nous allons chercher a déterminer quel logiciel de minage de cryptominais est l
 Nous définirons l'efficacité du logiciel de minage en fonction de sa puissance de calcule soit le hash rate,<br>
 nombre de hash effectuer sur une période donnée.<br>
 <br>
-Nous pouvons effectuer un test simple en démarrage différent logiciel de minage et regarde le hashrate reporté par<br>
-le logiciel mais la facon de calculer ce hashrate peut varié celon le logiciel nous allons donc mettre en place une<br>
-procédure sur et fonctionnelle.<br>
+Nous pouvons effectuer un test simple en utilisant différent logiciel de minage et regardent le hashrate reporté par
+le logiciel mais la facon de calculer ce hashrate peut varier celon chaque logiciel.<br>
+Nous allons donc mettre en place un protocole fiable.<br>
 <br>
 
-## La procédure de test
-Afin de test les logiciels nous avons m'y en place un processus qui peut etre répéter un certains nombre<br>
-de fois sans etre altéré.<br>
+# Le Protocole
+Afin de tester les logiciels nous allons mettre en place une procedure qui peut etre répéter un certains nombre de fois sans etre altéré.<br>
 Pour cela le protocol suit les étapes suivante :
-- Démarrer une pool ou les jobs / difficulté est prédéfini et invariable.
-- Démarrer le logiciel de minage avec un parametre notre pool
+- Durée 20 minutes.
+- Démarrer notre pool avec un job / une difficulté / un extranonce prédéfinis et invariable.
+- Démarrer le logiciel de minage avec en parametre notre pool.
 - Récolter les informations recue sur notre pool
-- Durée du protocol 20 minutes
+<br>
 Grace aux informations recue telque les shares nous pouvons en déterminé la puissance de calcule de chaque logiciel.<br>
 
-# Mining traditionnelle
-
-En procédent comme nous l'indique le chapitre précédent nous avons m'y en place un protocol simple :
-- Une GPU nVIDIA 3060
-- Une GPU Nvidia 3070
-- Miner avec KAWPOW
-- Utilisé notre pool fake
-- Les jobs sont identique entre les test de chaque logiciel de minage
-
+# Mining Multi GPU
+Nous allons utiliser une GPU `NVIDIA 3060` et une GPU `NVIDIA 3070 RTX`.<br>
+Nous allons miner sur `KAWPOW`.<br>
+<br>
 Nous avons comptabilisé le nombre de shares trouvé par chaque logiciel.<br>
 
 |       GPU       | T-REX | PICKMINER | BZMINER | GMINER | NBMINER |
@@ -36,17 +31,18 @@ Nous avons comptabilisé le nombre de shares trouvé par chaque logiciel.<br>
 | NVIDIA 3070 RTX |  33   |    28     |    9    |   41   |    9    |
 |      Total      |  58   |    50     |   34    |   69   |    9    |
 
-Au vue de ces résultats, nous pouvons penser ques les logiciels les plus performants sont<br>
+Au vue de ces résultats, nous pouvons faire le classement suivant : <br>
 GMINER > T-REX > Pickminer > BZMiner > NBMiner.<br>
 <br>
-Nous avons utilisé 2 GPUs lors de notre session de minages, l'utilsiation de deux GPUs vont donc entrainer un dispatch<br>
+Nous avons utilisé 2 GPUs lors de notre session de minages, l'utilisiation de deux GPUs va donc entrainer un dispatch<br>
 des nonce calculer et nous n'avons pas de garantie que tous les logiciel de minage utilise la meme régles.<br>
-De ce fait si la regles de dispatch des nonces n'est pas la meme les logiciel de minage ne test pas le meme jeux de données.<br>
+De ce fait si la regles de dispatch des nonces ne sont pas la meme entre les logiciel de minage alors ils ne test pas le meme jeux de données.<br>
+C'est a dire que chaque logiciel ne va pas tester les meme nonce donc on aura des résultats non exploitable.<br>
 
-# Mining en Hashrate OneJob
+# Mining Solo GPU
 
 Afin de garantir que tous les logiciels de minage calcule sur le meme jeu de données.<br>
-C'est a dire qu'ils vont tous tester les meme nonces nous devons utilser qu'une seul GPU.<br>
+C'est a dire qu'ils vont tous tester les meme nonces nous devons utilser qu'une seule GPU.<br>
 Pour la suite du protocol nous allons utiliser ne `NVIDIA 3070 RTX`.<br>
 
 ## Nombre de share
@@ -62,8 +58,12 @@ Nous pouvons constater rapidement que le classement a radicalement changer ce qu
 (T-Rex = Pickminer) > GMiner > NBMiner > BZMiner.<br>
 
 ## Puissance de calcule
-Le nombre de share n'est pas encore assez précis pour déterminer la puissance.<br>
-Nous alons donc aussi récolté la date de la premiere share recue et la date de la derniere share recue ainsi que leur valeurs.<br>
+Le nombre de share n'est pas encore assez précis pour déterminer la puissance de calcule.<br>
+Nous allons donc aussi récolter :
+- La date de la premiere share recue
+- La date de la derniere share recue
+- La valeur de la premier share recue
+- La valeur de la derniere sahre recue
 
 |    Software     |        T-REX         |      PICKMINER       |       BZMINER        |        GMINER        |       NBMINER        |
 |:---------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|
@@ -74,7 +74,7 @@ Nous alons donc aussi récolté la date de la premiere share recue et la date de
 |   Total Nonce   |     28933761115      |     28933761115      |      5119206651      |     28933761115      |     22042286443      |
 
 Nous allons calculer le Hashrate effective en fonction du temps passé entre la premiere share et la derniere share.<br>
-Formule pour trouver le Hashrate = `Total Nonce` / ((`elapsed minutes` * 60) + `Elapsed Second`) = H/S.<br>
+Formule pour trouver le Hashrate = `Total Nonce` / ((`Elapsed Minutes` * 60) + `Elapsed Second`) = H/S.<br>
 
 | Software |  T-REX   | PICKMINER | BZMINER  |  GMINER  | SRBMINER | NBMINER  |
 |:--------:|:--------:|:---------:|:--------:|:--------:|:--------:|:--------:|
