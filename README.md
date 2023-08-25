@@ -15,36 +15,37 @@ python3 main.py
 ```
 
 # Benchmark
+* `KO`: Problem during the mining
+* `US`: Unsupported
 
+Protocol utilisé : `mining_edtude_fr.md`
 
 ## NVIDIA
 ---
-OS: `LINUX`<br>
-Algo: `KAWPOW`<br>
-GPU: `NVIDIA RTX 3060`<br>
-Duration: `10 minutes`<br>
-Command: `main.exe --no_show_mining_output --mining_duration=10`<br>
-Share found:
-| T-REX | PICKMINER | BZMINER | SRBMINER | GMINER |
-| :---: | :-------: | :-----: | :------: | :----: |
-|   10  |   10      |   5     |   7      |  11    |
----
 OS: `WINDOWS`<br>
 Algo: `KAWPOW`<br>
-GPU: `RTX 3060` + `GTX 1070`<br>
+GPU: `NVIDIA RTX 3070`<br>
 Duration: `20 minutes`<br>
-Command: `main.exe --no_show_mining_output --mining_duration=20`<br>
-Share found:
-| T-REX | PICKMINER | BZMINER | SRBMINER | GMINER |
-| :---: | :-------: | :-----: | :------: | :----: |
-|   52  |   40      |   18    |   0      |  35    |
 
-During this test `SRBMINER` does not work.
-```
-Detecting GPU devices...
-[2023-06-23 13:05:50] Error CL_UNKNOWN_ERROR when getting number of OpenCL platforms
-GPU mining disabled, issues with OpenCL
-No devices available to mine with
-```
+___KAWPOW___
+
+| Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER |
+|:--------:|:-----:|:---------:|:-------:|:------:|:-------:|
+|   MH/S   | 25.43 |   25.49   |  20.89  | 24.48  |  22.94  |
+
+
+___AUTOLYKOS V2___
+
+| Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER |
+|:--------:|:-----:|:---------:|:-------:|:------:|:-------:|
+|   MH/S   | SOON  |   SOON    |  SOON   |  SOON  |  SOON   |
+
+
+___ETHEREUM___
+
+| Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER |
+|:--------:|:-----:|:---------:|:-------:|:------:|:-------:|
+|   MH/S   | SOON  |   SOON    |  SOON   |  SOON  |  SOON   |
+
 
 ## AMD

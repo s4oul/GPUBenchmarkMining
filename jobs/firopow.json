@@ -1,5 +1,5 @@
 {
-  "delay": 5,
+  "delay": 3600,
   "extra_nonce": "00050a3f",
   "notify": [
     {
