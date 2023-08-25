@@ -29,23 +29,24 @@ Duration: `20 minutes`<br>
 
 ___KAWPOW___
 
-| Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER |
-|:--------:|:-----:|:---------:|:-------:|:------:|:-------:|
-|   MH/S   | 25.43 |   25.49   |  20.89  | 24.48  |  22.94  |
+| Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER |
+|:--------:|:-----:|:---------:|:-------:|:------:|:-------:|:--------:|
+|   MH/S   | 25.43 |   25.49   |  20.89  | 24.48  |  22.94  |    22    |
 
 
 ___AUTOLYKOS V2___
 
-| Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER |
-|:--------:|:-----:|:---------:|:-------:|:------:|:-------:|
-|   MH/S   | SOON  |   SOON    |  SOON   |  SOON  |  SOON   |
+| Software | T-REX  | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER |
+|:--------:|:------:|:---------:|:-------:|:------:|:-------:|:--------:|
+|   MH/S   | 143,75 |  132,34   |  SOON   | 143,32 | 142,43  |  65,74   |
 
 
 ___ETHEREUM___
 
-| Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER |
-|:--------:|:-----:|:---------:|:-------:|:------:|:-------:|
-|   MH/S   | SOON  |   SOON    |  SOON   |  SOON  |  SOON   |
+| Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER |
+|:--------:|:-----:|:---------:|:-------:|:------:|:-------:|:--------:|
+|   MH/S   | SOON  |   SOON    |  SOON   |  SOON  |  SOON   |   SOON   |
 
 
 ## AMD
+SOON

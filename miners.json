@@ -189,7 +189,7 @@
         "ethpow": "-a ethash",
         "etchash": ""
       },
-      "args": "--user <WALLET> stratum+tcp://<HOST>:<PORT>"
+      "args": "--user <WALLET> --url stratum+tcp://<HOST>:<PORT>"
     }
   ]
 }
