@@ -51,6 +51,9 @@ class GPUMiner:
             self.folder_extracted = os.path.join(self.folder_extracted,
                                                  f'NBMiner_{"Win" if os.name == "nt" else "Linux"}')
 
+        elif self.name == 'etcminer':
+            self.folder_extracted = os.path.join(self.folder_extracted, 'etcminer')
+
     def is_running(self) -> bool:
         try:
             psutil.Process(self.process.pid)

@@ -8,7 +8,8 @@
       "gminer",
       "lolminer",
       "srbminer",
-      "nbminer"
+      "nbminer",
+      "etcminer"
     ],
     "nvidia": [
       "t_rex",
@@ -17,7 +18,8 @@
       "gminer",
       "lolminer",
       "srbminer",
-      "nbminer"
+      "nbminer",
+      "etcminer"
     ]
   },
   "miner_algo": {
@@ -59,8 +61,13 @@
       "nbminer"
     ],
     "etchash": [
+      "teamreadminer",
       "t_rex",
-      "pickminer"
+      "pickminer",
+      "bzminer",
+      "gminer",
+      "lolminer",
+      "etcminer"
     ]
   },
   "wallets": {
@@ -82,7 +89,7 @@
         "firopow": "-a mtp_firopow",
         "autolykos2": "-a autolykos2",
         "ethpow": "-a ethash",
-        "etchash": ""
+        "etchash": "-a etchash"
       },
       "args": "-o stratum+tcp://<HOST>:<PORT> -u <WALLET>.s4oulBenchmark -p x"
     },
@@ -127,7 +134,7 @@
         "firopow": "",
         "autolykos2": "-a ergo",
         "ethpow": "-a ethw",
-        "etchash": ""
+        "etchash": "-a etchash"
       },
       "args": "-w <WALLET> -p stratum+tcp://<HOST>:<PORT> --nc 1 -r s4oulBenchmark"
     },
@@ -142,9 +149,9 @@
         "firopow": "--algo firo",
         "autolykos2": "--algo autolykos2",
         "ethpow": "--algo ethash",
-        "etchash": ""
+        "etchash": "--algo etchash"
       },
-      "args": "--server <HOST>:<PORT> --user <WALLET>.s4oulBenchmark --fan 80"
+      "args": "--server <HOST>:<PORT> --user <WALLET>.s4oulBenchmark"
     },
     {
       "name": "lolminer",
@@ -157,7 +164,7 @@
         "firopow": "",
         "autolykos2": "--algo AUTOLYKOS2",
         "ethpow": "--algo ETHASH",
-        "etchash": ""
+        "etchash": "-algo ETCHASH"
       },
       "args": "--user <WALLET> --pool <HOST>:<PORT> --nocolor"
     },
@@ -172,7 +179,7 @@
         "firopow": "--algorithm firopow",
         "autolykos2": "--algorithm autolykos2",
         "ethpow": "--algorithm ethash",
-        "etchash": ""
+        "etchash": "-algorithm etchash"
       },
       "args": "--disable-cpu --pool <HOST>:<PORT> --wallet <WALLET> --gpu-boost 100 --worker s4oulBenchmark"
     },
@@ -187,9 +194,24 @@
         "firopow": "",
         "autolykos2": "-a ergo",
         "ethpow": "-a ethash",
-        "etchash": ""
+        "etchash": "-a etchash"
       },
       "args": "--user <WALLET> --url stratum+tcp://<HOST>:<PORT>"
+    },
+    {
+      "name": "etcminer",
+      "version": "0.1",
+      "url_win": "https://github.com/pinkcigareti/etcminer/releases/download/v<VERSION>/etcminer-v<VERSION>.zip",
+      "url_linux": "https://github.com/pinkcigareti/etcminer/releases/download/v<VERSION>/etcminer-v<VERSION>.zip",
+      "exe": "etcminer",
+      "algos": {
+        "kawpow": "",
+        "firopow": "",
+        "autolykos2": "",
+        "ethpow": "",
+        "etchash": ""
+      },
+      "args": "-P stratum2+tcp://<WALLET>.s4oulBenchmark@<HOST>:<PORT>"
     }
   ]
 }

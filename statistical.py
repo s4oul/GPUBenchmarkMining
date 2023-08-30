@@ -18,8 +18,16 @@ class Statistical:
         self.time_last_nonce = datetime.datetime.now()
 
     def compute(self, file_fd):
+        if self.time_last_nonce is None:
+            logging.error(f'No datas cannot compute Hashrate!')
+            return
+        if self.time_first_nonce is None:
+            logging.error(f'No datas cannot compute Hashrate!')
+            return
+
         elapsed = int((self.time_last_nonce - self.time_first_nonce).total_seconds())
         if elapsed <= 0:
+            logging.error(f'Elapsed time is 0 second!')
             return
 
         total_nonce = self.last_nonce - self.first_nonce

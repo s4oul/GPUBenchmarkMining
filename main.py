@@ -103,7 +103,6 @@ try:
 except Exception as error:
     sys.exit(f'Stop benchmark ! {error}')
 
-
 # Start Stratum / Network
 stratum_client = Stratum(args.algo, args.host, args.port)
 if stratum_client.load_jobs() is False:
