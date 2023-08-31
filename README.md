@@ -41,12 +41,18 @@ ___AUTOLYKOS V2___
 |   MH/S   | 143,75 |  132,34   |  SOON   | 143,32 | 142,43  |  65,74   |
 
 
-___ETHEREUM___
+___ETHASH___
 
 | Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER |
 |:--------:|:-----:|:---------:|:-------:|:------:|:-------:|:--------:|
-|   MH/S   | SOON  |   SOON    |  SOON   |  SOON  |  SOON   |   SOON   |
+|   MH/S   | 49.70 |   45,78   |  SOON   | 51,41  |  SOON   |   SOON   |
 
+
+___ETCHASH___
+
+| Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER | ETCMINER |
+|:--------:|:-----:|:---------:|:-------:|:------:|:-------:|:--------:|:--------:|
+|   MH/S   | 51,39 |   46,75   |  SOON   | 51,44  |  SOON   |   SOON   |  49,67   | 
 
 ## AMD
 SOON

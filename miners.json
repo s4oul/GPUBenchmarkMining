@@ -55,10 +55,8 @@
       "t_rex",
       "pickminer",
       "bzminer",
-      "srbminer",
       "gminer",
-      "lolminer",
-      "nbminer"
+      "lolminer"
     ],
     "etchash": [
       "teamreadminer",
