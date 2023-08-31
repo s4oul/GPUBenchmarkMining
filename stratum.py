@@ -85,7 +85,8 @@ class Stratum:
         self.running = False
         # waiting thread __loop_notify terminated
         time.sleep(1)
-        self.miner.stats.compute(self.fd_log)
+        if self.fd_log is not None:
+            self.miner.stats.compute(self.fd_log)
         try:
             if self.fd_log is not None:
                 self.fd_log.close()
