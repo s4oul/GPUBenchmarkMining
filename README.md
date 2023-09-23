@@ -1,9 +1,4 @@
-[![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
-
 # Install
-[![forthebadge](https://forthebadge.com/images/badges/works-on-my-machine.svg)](https://forthebadge.com)
 ```sh
 pip3 install --upgrade pip setuptools wheel
 pip3 install -r requirements.txt
@@ -21,11 +16,6 @@ python3 main.py
 Protocol utilisé : `mining_edtude_fr.md`
 
 ## NVIDIA
----
-OS: `WINDOWS`<br>
-Algo: `KAWPOW`<br>
-GPU: `NVIDIA RTX 3070`<br>
-Duration: `20 minutes`<br>
 
 ___KAWPOW___
 
@@ -38,21 +28,48 @@ ___AUTOLYKOS V2___
 
 | Software | T-REX  | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER |
 |:--------:|:------:|:---------:|:-------:|:------:|:-------:|:--------:|
-|   MH/S   | 143,75 |  132,34   |  SOON   | 143,32 | 142,43  |  65,74   |
+|   MH/S   | 143.75 |  132.34   |  SOON   | 143.32 | 142.43  |  65.74   |
 
 
 ___ETHASH___
 
-| Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER |
-|:--------:|:-----:|:---------:|:-------:|:------:|:-------:|:--------:|
-|   MH/S   | 49.70 |   45,78   |  SOON   | 51,41  |  SOON   |   SOON   |
+| Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER | LOLMINER |
+|:--------:|:-----:|:---------:|:-------:|:------:|:-------:|:--------:|:--------:|
+|   MH/S   | 49.70 |   45.78   |  SOON   | 51.41  |  SOON   |   SOON   |   SOON   |
 
 
 ___ETCHASH___
 
-| Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER | ETCMINER |
-|:--------:|:-----:|:---------:|:-------:|:------:|:-------:|:--------:|:--------:|
-|   MH/S   | 51,39 |   46,75   |  SOON   | 51,44  |  SOON   |   SOON   |  49,67   | 
+| Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER | ETCMINER | LOLMINER |
+|:--------:|:-----:|:---------:|:-------:|:------:|:-------:|:--------:|:--------:|:--------:|
+|   MH/S   | 51.39 |   46.75   |  SOON   | 51.44  |  SOON   |   SOON   |  49.67   |   SOON   |
 
 ## AMD
-SOON
+
+___KAWPOW___
+
+| Software | TEAMREDMINER | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER |
+|:--------:|:------------:|:---------:|:-------:|:------:|:-------:|:--------:|
+|   MH/S   |     SOON     |   18.47   |  SOON   | 17.28  |  SOON   |  17.98   |
+
+___AUTOLYKOS V2___
+
+| Software | TEAMREDMINER | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER | LOLMINER |
+|:--------:|:------------:|:---------:|:-------:|:------:|:-------:|:--------:|:--------:|
+|   MH/S   |    101.00    |   80.59   |  SOON   |   KO   |  SOON   |  98.50   |  97.57   |
+
+*GMINER : `ASUS AMD Radeon RX 5700 8GB [0000:05:00.0]: Device not supported for this algorithm`<br>
+
+
+___ETHASH___
+
+| Software | TEAMREDMINER | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER | LOLMINER |
+|:--------:|:------------:|:---------:|:-------:|:------:|:-------:|:--------:|:--------:|
+|   MH/S   |     SOON     |   SOON    |  SOON   |  50.1  |  SOON   |   SOON   |  48.78   |
+
+
+___ETCHASH___
+
+| Software | TEAMREDMINER | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER | ETCMINER | LOLMINER |
+|:--------:|:------------:|:---------:|:-------:|:------:|:-------:|:--------:|:--------:|:--------:|
+|   MH/S   |     SOON     |   SOON    |  SOON   |  SOON  |  SOON   |   SOON   |   SOON   |   SOON   |

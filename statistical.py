@@ -32,10 +32,11 @@ class Statistical:
 
         total_nonce = self.last_nonce - self.first_nonce
         hashrate = total_nonce / elapsed
+        m_hashrate = round(float(hashrate / 1000000), 2)
         logging.info(f'Elapsed[{elapsed}]')
         logging.info(f'TotalNonce[{total_nonce}]')
-        logging.info(f'Hashrate[{hashrate}] H/S - {int(hashrate / 1000000)} MH/S')
+        logging.info(f'Hashrate[{hashrate}] H/S - {m_hashrate} MH/S')
 
         file_fd.write(f'Elapsed[{elapsed}]\n')
         file_fd.write(f'TotalNonce[{total_nonce}]\n')
-        file_fd.write(f'Hashrate[{hashrate}] H/S - {hashrate / 1000000} MH/S\n')
+        file_fd.write(f'Hashrate[{hashrate}] H/S - {m_hashrate} MH/S\n')
