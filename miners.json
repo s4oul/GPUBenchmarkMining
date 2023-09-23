@@ -1,7 +1,7 @@
 {
   "miner_device_available": {
     "amd": [
-      "teamreadminer",
+      "teamredminer",
       "pickminer",
       "bzminer",
       "srbminer",
@@ -9,7 +9,8 @@
       "lolminer",
       "srbminer",
       "nbminer",
-      "etcminer"
+      "etcminer",
+      "ethminer"
     ],
     "nvidia": [
       "t_rex",
@@ -19,12 +20,13 @@
       "lolminer",
       "srbminer",
       "nbminer",
-      "etcminer"
+      "etcminer",
+      "ethminer"
     ]
   },
   "miner_algo": {
     "kawpow": [
-      "teamreadminer",
+      "teamredminer",
       "t_rex",
       "pickminer",
       "bzminer",
@@ -33,7 +35,7 @@
       "nbminer"
     ],
     "firopow": [
-      "teamreadminer",
+      "teamredminer",
       "t_rex",
       "pickminer",
       "gminer",
@@ -41,7 +43,7 @@
       "nbminer"
     ],
     "autolykos2": [
-      "teamreadminer",
+      "teamredminer",
       "t_rex",
       "pickminer",
       "bzminer",
@@ -51,7 +53,8 @@
       "nbminer"
     ],
     "ethpow": [
-      "teamreadminer",
+      "ethminer",
+      "teamredminer",
       "t_rex",
       "pickminer",
       "bzminer",
@@ -59,7 +62,7 @@
       "lolminer"
     ],
     "etchash": [
-      "teamreadminer",
+      "teamredminer",
       "t_rex",
       "pickminer",
       "bzminer",
@@ -82,6 +85,13 @@
       "url_win": "https://github.com/todxx/teamredminer/releases/download/v<VERSION>/teamredminer-v<VERSION>-win.zip",
       "url_linux": "https://github.com/todxx/teamredminer/releases/download/v<VERSION>/teamredminer-v<VERSION>-linux.tgz",
       "exe": "teamredminer",
+      "stratums": {
+        "kawpow": "stratum+tcp",
+        "firopow": "stratum+tcp",
+        "autolykos2": "stratum+tcp",
+        "ethpow": "stratum2+tcp",
+        "etchash": "stratum2+tcp"
+      },
       "algos": {
         "kawpow": "-a kawpow",
         "firopow": "-a mtp_firopow",
@@ -89,7 +99,7 @@
         "ethpow": "-a ethash",
         "etchash": "-a etchash"
       },
-      "args": "-o stratum+tcp://<HOST>:<PORT> -u <WALLET>.s4oulBenchmark -p x"
+      "args": "-o <STRATUM>://<HOST>:<PORT> -u <WALLET>.s4oulBenchmark -p x"
     },
     {
       "name": "t_rex",
@@ -97,6 +107,13 @@
       "url_win": "https://github.com/trexminer/T-Rex/releases/download/<VERSION>/t-rex-<VERSION>-win.zip",
       "url_linux": "https://github.com/trexminer/T-Rex/releases/download/<VERSION>/t-rex-<VERSION>-linux.tar.gz",
       "exe": "t-rex",
+      "stratums": {
+        "kawpow": "stratum+tcp",
+        "firopow": "stratum+tcp",
+        "autolykos2": "stratum+tcp",
+        "ethpow": "stratum2+tcp",
+        "etchash": "stratum2+tcp"
+      },
       "algos": {
         "kawpow": "-a kawpow",
         "firopow": "-a firopow",
@@ -104,7 +121,7 @@
         "ethpow": "-a ethash",
         "etchash": "-a etchash"
       },
-      "args": "-o stratum+tcp://<HOST>:<PORT> -u <WALLET>.s4oulBenchmark -p x"
+      "args": "-o <STRATUM>://<HOST>:<PORT> -u <WALLET>.s4oulBenchmark -p x"
     },
     {
       "name": "pickminer",
@@ -112,6 +129,13 @@
       "url_win": "https://github.com/Pickminer/Pickminer/releases/download/v<VERSION>/pickminer_setup_<VERSION>.exe",
       "url_linux": "https://github.com/Pickminer/Pickminer/releases/download/v<VERSION>/pickminer_<VERSION>_ubuntu_22_04.tar.gz",
       "exe": "pickminer",
+      "stratums": {
+        "kawpow": "",
+        "firopow": "",
+        "autolykos2": "",
+        "ethpow": "",
+        "etchash": ""
+      },
       "algos": {
         "kawpow": "--coin=RVN",
         "firopow": "--coin=FIRO",
@@ -127,6 +151,13 @@
       "url_win": "https://github.com/bzminer/bzminer/releases/download/v<VERSION>/bzminer_v<VERSION>_windows.zip",
       "url_linux": "https://github.com/bzminer/bzminer/releases/download/v<VERSION>/bzminer_v<VERSION>_linux.tar.gz",
       "exe": "bzminer",
+      "stratums": {
+        "kawpow": "stratum+tcp",
+        "firopow": "stratum+tcp",
+        "autolykos2": "stratum+tcp",
+        "ethpow": "stratum2+tcp",
+        "etchash": "stratum2+tcp"
+      },
       "algos": {
         "kawpow": "-a rvn",
         "firopow": "",
@@ -134,7 +165,7 @@
         "ethpow": "-a ethw",
         "etchash": "-a etchash"
       },
-      "args": "-w <WALLET> -p stratum+tcp://<HOST>:<PORT> --nc 1 -r s4oulBenchmark"
+      "args": "-w <WALLET> -p <STRATUM>://<HOST>:<PORT> --nc 1 -r s4oulBenchmark"
     },
     {
       "name": "gminer",
@@ -142,6 +173,13 @@
       "url_win": "https://github.com/develsoftware/GMinerRelease/releases/download/<VERSION>/gminer_<VERSION>_windows64.zip",
       "url_linux": "https://github.com/develsoftware/GMinerRelease/releases/download/<VERSION>/gminer_<VERSION>_linux64.tar.xz",
       "exe": "miner",
+      "stratums": {
+        "kawpow": "stratum",
+        "firopow": "stratum",
+        "autolykos2": "stratum",
+        "ethpow": "stratum",
+        "etchash": "stratum"
+      },
       "algos": {
         "kawpow": "--algo kawpow",
         "firopow": "--algo firo",
@@ -149,7 +187,7 @@
         "ethpow": "--algo ethash",
         "etchash": "--algo etchash"
       },
-      "args": "--server <HOST>:<PORT> --user <WALLET>.s4oulBenchmark"
+      "args": "--proto <STRATUM> --server <HOST>:<PORT> --user <WALLET>.s4oulBenchmark"
     },
     {
       "name": "lolminer",
@@ -157,6 +195,13 @@
       "url_win": "https://github.com/Lolliedieb/lolMiner-releases/releases/download/<VERSION>/lolMiner_v<VERSION>_Win64.zip",
       "url_linux": "https://github.com/Lolliedieb/lolMiner-releases/releases/download/<VERSION>/lolMiner_v<VERSION>_Lin64.tar.gz",
       "exe": "lolMiner",
+      "stratums": {
+        "kawpow": "",
+        "firopow": "",
+        "autolykos2": "",
+        "ethpow": "--ethstratum ETHV1",
+        "etchash": "--ethstratum ETHV1"
+      },
       "algos": {
         "kawpow": "",
         "firopow": "",
@@ -164,7 +209,7 @@
         "ethpow": "--algo ETHASH",
         "etchash": "-algo ETCHASH"
       },
-      "args": "--user <WALLET> --pool <HOST>:<PORT> --nocolor"
+      "args": "<STRATUM> --user <WALLET> --pool <HOST>:<PORT> --nocolor"
     },
     {
       "name": "srbminer",
@@ -172,6 +217,13 @@
       "url_win": "https://github.com/doktor83/SRBMiner-Multi/releases/download/<VERSION>/SRBMiner-Multi-2-2-9-win64.zip",
       "url_linux": "https://github.com/doktor83/SRBMiner-Multi/releases/download/<VERSION>/SRBMiner-Multi-2-2-9-Linux.tar.xz",
       "exe": "SRBMiner-MULTI",
+      "stratums": {
+        "kawpow": "",
+        "firopow": "",
+        "autolykos2": "",
+        "ethpow": "",
+        "etchash": ""
+      },
       "algos": {
         "kawpow": "--algorithm kawpow",
         "firopow": "--algorithm firopow",
@@ -187,6 +239,13 @@
       "url_win": "https://github.com/NebuTech/NBMiner/releases/download/v<VERSION>/NBMiner_<VERSION>_Win.zip",
       "url_linux": "https://github.com/NebuTech/NBMiner/releases/download/v<VERSION>/NBMiner_<VERSION>_Linux.zip",
       "exe": "nbminer",
+      "stratums": {
+        "kawpow": "stratum+tcp",
+        "firopow": "stratum+tcp",
+        "autolykos2": "stratum+tcp",
+        "ethpow": "stratum2+tcp",
+        "etchash": "stratum2+tcp"
+      },
       "algos": {
         "kawpow": "-a kawpow",
         "firopow": "",
@@ -194,14 +253,21 @@
         "ethpow": "-a ethash",
         "etchash": "-a etchash"
       },
-      "args": "--user <WALLET> --url stratum+tcp://<HOST>:<PORT>"
+      "args": "--user <WALLET> --url <STRATUM>://<HOST>:<PORT>"
     },
     {
-      "name": "etcminer",
-      "version": "0.1",
-      "url_win": "https://github.com/pinkcigareti/etcminer/releases/download/v<VERSION>/etcminer-v<VERSION>.zip",
-      "url_linux": "https://github.com/pinkcigareti/etcminer/releases/download/v<VERSION>/etcminer-v<VERSION>.zip",
-      "exe": "etcminer",
+      "name": "ethminer",
+      "version": "0.18.0",
+      "url_win": "https://github.com/ethereum-mining/ethminer/releases/download/v<VERSION>/ethminer-<VERSION>-cuda10.0-windows-amd64.zip",
+      "url_linux": "https://github.com/ethereum-mining/ethminer/releases/download/v<VERSION>/ethminer-<VERSION>-cuda-9-linux-x86_64.tar.gz",
+      "exe": "ethminer",
+      "stratums": {
+        "kawpow": "",
+        "firopow": "",
+        "autolykos2": "",
+        "ethpow": "stratum2+tcp",
+        "etchash": ""
+      },
       "algos": {
         "kawpow": "",
         "firopow": "",
@@ -209,7 +275,28 @@
         "ethpow": "",
         "etchash": ""
       },
-      "args": "-P stratum2+tcp://<WALLET>.s4oulBenchmark@<HOST>:<PORT>"
+      "args": "-P <STRATUM>://<WALLET>.s4oulBenchmark@<HOST>:<PORT>"
+    },
+    {
+      "name": "etcminer",
+      "version": "0.1",
+      "url_win": "https://github.com/pinkcigareti/etcminer/releases/download/v<VERSION>/etcminer-v<VERSION>.zip",
+      "url_linux": "https://github.com/pinkcigareti/etcminer/releases/download/v<VERSION>/etcminer-v<VERSION>.zip",
+      "exe": "etcminer",
+      "stratums": {
+        "kawpow": "",
+        "firopow": "",
+        "autolykos2": "",
+        "ethpow": "",
+        "etchash": "stratum2+tcp"
+      },      "algos": {
+        "kawpow": "",
+        "firopow": "",
+        "autolykos2": "",
+        "ethpow": "",
+        "etchash": ""
+      },
+      "args": "-P <STRATUM>://<WALLET>.s4oulBenchmark@<HOST>:<PORT>"
     }
   ]
 }

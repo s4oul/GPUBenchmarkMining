@@ -1,0 +1,55 @@
+{
+  "delay": 3600,
+  "extra_nonce": "1773",
+  "difficulty": "1.0477219092308587",
+  "notify": [
+    {
+      "params": [
+        "7d6bdad3",
+        "9a845f3f6ff2c8b20f8528e2af91156778be0b0a49030cbf2c58a86cc4462f17",
+        "e622bb0dc4d28cc366d932918dc81263e3ae24ef588cb61d58599cb0ab01bf88",
+        true
+      ]
+    },
+    {
+      "params":[
+        "d132dca7",
+        "9a845f3f6ff2c8b20f8528e2af91156778be0b0a49030cbf2c58a86cc4462f17",
+        "e622bb0dc4d28cc366d932918dc81263e3ae24ef588cb61d58599cb0ab01bf88",
+        false
+      ]
+    },
+    {
+      "params":[
+        "bf192fb3",
+        "9a845f3f6ff2c8b20f8528e2af91156778be0b0a49030cbf2c58a86cc4462f17",
+        "83881d3b8d36b3df7d65fa989733e60537c3e32b458b71dd765c391aa36f24d9",
+        true
+      ]
+    },
+    {
+      "params":[
+        "f052fde0",
+        "9a845f3f6ff2c8b20f8528e2af91156778be0b0a49030cbf2c58a86cc4462f17",
+        "432d70054934aca7ba7f314108f96cf9a4553caa1032cc4706cd4107c46cd2f9",
+        true
+      ]
+    },
+    {
+      "params":[
+        "5d8c05b2",
+        "9a845f3f6ff2c8b20f8528e2af91156778be0b0a49030cbf2c58a86cc4462f17",
+        "66cf420a6eb9222278bdc7ed17f8cd67fe72803214b73a467902ad29afbdc50f",
+        true
+      ]
+    },
+    {
+      "params":[
+        "463ed3fc",
+        "9a845f3f6ff2c8b20f8528e2af91156778be0b0a49030cbf2c58a86cc4462f17",
+        "e08ec9647f0b4742289682f5b598e02127e8401597d3ffae17b859d54a5151a7",
+        true
+      ]
+    }
+  ]
+}

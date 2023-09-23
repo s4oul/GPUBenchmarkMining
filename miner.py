@@ -24,6 +24,7 @@ class GPUMiner:
         self.url_linux = json_data['url_linux']
         self.exe = json_data['exe']
         self.algos = json_data['algos']
+        self.stratums = json_data['stratums']
         self.args = json_data['args']
         self.wallet = wallet
         self.folder_extracted = os.path.join('miners', f'{self.name}_{self.version}', 'extracted')
@@ -53,6 +54,9 @@ class GPUMiner:
 
         elif self.name == 'etcminer':
             self.folder_extracted = os.path.join(self.folder_extracted, 'etcminer')
+
+        elif self.name == 'ethminer':
+            self.folder_extracted = os.path.join(self.folder_extracted, 'bin')
 
     def is_running(self) -> bool:
         try:
@@ -85,6 +89,9 @@ class GPUMiner:
 
     def get_shares(self) -> int:
         return self.share
+
+    def get_stratum_protocol(self, algo_name: str) -> str:
+        return self.stratums[algo_name]
 
     def download(self) -> bool:
         try:
@@ -164,10 +171,8 @@ class GPUMiner:
         parameters = self.get_args() \
             .replace('<HOST>', stratum.get_host()) \
             .replace('<PORT>', str(stratum.get_port()))\
-            .replace('<WALLET>', self.get_wallet())
-
-        if self.name == 't_rex':
-            parameters = parameters.replace('stratum', 'stratum2')
+            .replace('<WALLET>', self.get_wallet())\
+            .replace('<STRATUM>', self.get_stratum_protocol(algo_name))
 
         cmd_algo = self.get_algos(algo_name)
 
