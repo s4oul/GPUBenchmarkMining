@@ -59,6 +59,9 @@ class GPUMiner:
         elif self.name == 'ethminer':
             self.folder_extracted = os.path.join(self.folder_extracted, 'bin')
 
+        elif self.name == 'rigel':
+            self.folder_extracted = os.path.join(self.folder_extracted, f'rigel-{self.version}-{"win" if os.name == "nt" else "linux"}')
+
     def is_running(self) -> bool:
         try:
             psutil.Process(self.process.pid)
