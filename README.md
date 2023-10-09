@@ -23,9 +23,9 @@ Protocol utilisé : `mining_edtude_fr.md`
 
 ___KAWPOW___
 
-| Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER | LOLMINER |
-|:--------:|:-----:|:---------:|:-------:|:------:|:-------:|:--------:|:--------:|
-|   MH/S   | 25.43 |   25.49   |  20.89  | 24.48  |  22.94  |    22    |    US    |
+| Software | T-REX | PICKMINER | BZMINER | GMINER | NBMINER | SRBMINER | LOLMINER | RIGEL |
+|:--------:|:-----:|:---------:|:-------:|:------:|:-------:|:--------:|:--------:|:-----:|
+|   MH/S   | 25.43 |   25.49   |  20.89  | 24.48  |  22.94  |    22    |    US    | 25,10 |
 
 
 ___AUTOLYKOS V2___

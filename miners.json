@@ -21,7 +21,8 @@
       "srbminer",
       "nbminer",
       "etcminer",
-      "ethminer"
+      "ethminer",
+      "rigel"
     ]
   },
   "miner_algo": {
@@ -32,7 +33,8 @@
       "bzminer",
       "gminer",
       "srbminer",
-      "nbminer"
+      "nbminer",
+      "rigel"
     ],
     "firopow": [
       "teamredminer",
@@ -144,6 +146,28 @@
         "etchash": "--coin=ETC"
       },
       "args": "--host=<HOST> --port=<PORT> --wallet=<WALLET> --workername=s4oulWnd --opti_ui=true"
+    },
+    {
+      "name": "rigel",
+      "version": "1.9.1",
+      "url_win": "https://github.com/rigelminer/rigel/releases/download/<VERSION>/rigel-<VERSION>-win.zip",
+      "url_linux": "https://github.com/rigelminer/rigel/releases/download/<VERSION>/rigel-<VERSION>-linux.tar.gz",
+      "exe": "rigel",
+      "stratums": {
+        "kawpow": "stratum+tcp",
+        "firopow": "stratum+tcp",
+        "autolykos2": "stratum+tcp",
+        "ethpow": "stratum2+tcp",
+        "etchash": "stratum2+tcp"
+      },
+      "algos": {
+        "kawpow": "-a ravencoin",
+        "firopow": "",
+        "autolykos2": "",
+        "ethpow": "-a ethash",
+        "etchash": "-a etchash"
+      },
+      "args": "-o <STRATUM>://<HOST>:<PORT> -u <WALLET> -w s4oulBenchmark"
     },
     {
       "name": "bzminer",
