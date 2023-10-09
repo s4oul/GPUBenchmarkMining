@@ -81,7 +81,7 @@
   "miners": [
     {
       "name": "teamredminer",
-      "version": "0.10.13",
+      "version": "0.10.14",
       "url_win": "https://github.com/todxx/teamredminer/releases/download/v<VERSION>/teamredminer-v<VERSION>-win.zip",
       "url_linux": "https://github.com/todxx/teamredminer/releases/download/v<VERSION>/teamredminer-v<VERSION>-linux.tgz",
       "exe": "teamredminer",
@@ -125,7 +125,7 @@
     },
     {
       "name": "pickminer",
-      "version": "1.4.1",
+      "version": "1.4.3",
       "url_win": "https://github.com/Pickminer/Pickminer/releases/download/v<VERSION>/pickminer_setup_<VERSION>.exe",
       "url_linux": "https://github.com/Pickminer/Pickminer/releases/download/v<VERSION>/pickminer_<VERSION>_ubuntu_22_04.tar.gz",
       "exe": "pickminer",
@@ -147,7 +147,7 @@
     },
     {
       "name": "bzminer",
-      "version": "15.2.1",
+      "version": "17.0.0",
       "url_win": "https://github.com/bzminer/bzminer/releases/download/v<VERSION>/bzminer_v<VERSION>_windows.zip",
       "url_linux": "https://github.com/bzminer/bzminer/releases/download/v<VERSION>/bzminer_v<VERSION>_linux.tar.gz",
       "exe": "bzminer",
@@ -169,7 +169,7 @@
     },
     {
       "name": "gminer",
-      "version": "3.40",
+      "version": "3.41",
       "url_win": "https://github.com/develsoftware/GMinerRelease/releases/download/<VERSION>/gminer_<VERSION>_windows64.zip",
       "url_linux": "https://github.com/develsoftware/GMinerRelease/releases/download/<VERSION>/gminer_<VERSION>_linux64.tar.xz",
       "exe": "miner",
@@ -213,7 +213,7 @@
     },
     {
       "name": "srbminer",
-      "version": "2.2.9",
+      "version": "2.3.7",
       "url_win": "https://github.com/doktor83/SRBMiner-Multi/releases/download/<VERSION>/SRBMiner-Multi-2-2-9-win64.zip",
       "url_linux": "https://github.com/doktor83/SRBMiner-Multi/releases/download/<VERSION>/SRBMiner-Multi-2-2-9-Linux.tar.xz",
       "exe": "SRBMiner-MULTI",

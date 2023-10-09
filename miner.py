@@ -13,7 +13,7 @@ from statistical import Statistical
 
 class GPUMiner:
 
-    def __init__(self, json_data: dict, wallet: str):
+    def __init__(self, json_data: dict, wallet: str, device_type: str):
         self.stats = Statistical()
         self.running = False
         self.share = 0
@@ -27,6 +27,7 @@ class GPUMiner:
         self.stratums = json_data['stratums']
         self.args = json_data['args']
         self.wallet = wallet
+        self.device_type = device_type
         self.folder_extracted = os.path.join('miners', f'{self.name}_{self.version}', 'extracted')
         self.fd_log = None
 
@@ -74,6 +75,9 @@ class GPUMiner:
 
     def get_algos(self, algo_name) -> str:
         return self.algos[algo_name]
+
+    def get_device_type(self) -> str:
+        return self.device_type
 
     def get_args(self) -> str:
         return self.args
@@ -150,7 +154,7 @@ class GPUMiner:
         return True
 
     def __set_fd_log(self, algo_name: str):
-        log_file = os.path.join('results', f'{self.name}_{algo_name}.log')
+        log_file = os.path.join('results', f'{self.device_type}_{self.name}_{algo_name}.log')
         logging.info(f'{self.name} is writing LOG => {log_file}.')
         self.fd_log = open(log_file, 'w')
 

@@ -43,7 +43,7 @@ class Stratum:
     def start(self, miner, shares: Share):
         logging.info(f'Start pool on "{self.host}:{self.port}" !')
 
-        log_filename = os.path.join('results', f'{miner.get_name()}_{self.algo}_stratum.log')
+        log_filename = os.path.join('results', f'{miner.get_device_type()}_{miner.get_name()}_{self.algo}_stratum.log')
         logging.info(f'Stratum LOG => {log_filename}')
         self.fd_log = open(log_filename, 'w')
 

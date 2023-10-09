@@ -74,7 +74,7 @@ try:
 
         # Loads all miners from config file
         for miner in miner_json['miners']:
-            gpu_miner = GPUMiner(miner, miner_json['wallets'][args.algo])
+            gpu_miner = GPUMiner(miner, miner_json['wallets'][args.algo], args.device_type)
             gpu_miner_name = gpu_miner.get_name()
 
             # Check if the miner software is compatible with device in rig.
