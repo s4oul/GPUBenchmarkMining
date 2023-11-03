@@ -1,10 +1,10 @@
 # Etude sur la puissance de minage
 
-Nous allons chercher a déterminer quel logiciel de minage de cryptominais est le plus efficace.<br>
+Nous allons chercher a déterminer quel logiciel de minage de cryptomonaie est le plus efficace.<br>
 Nous définirons l'efficacité du logiciel de minage en fonction de sa puissance de calcule soit le hash rate,<br>
 nombre de hash effectuer sur une période donnée.<br>
 <br>
-Nous pouvons effectuer un test simple en utilisant différent logiciel de minage et regardent le hashrate reporté par
+Nous pouvons effectuer un test simple en utilisant différent logiciel de minage et en regardant le hashrate reporté par
 le logiciel mais la facon de calculer ce hashrate peut varier celon chaque logiciel.<br>
 Nous allons donc mettre en place un protocole fiable.<br>
 <br>
@@ -17,13 +17,13 @@ Pour cela le protocol suit les étapes suivante :
 - Démarrer le logiciel de minage avec en parametre notre pool.
 - Récolter les informations recue sur notre pool
 <br>
-Grace aux informations recue telque les shares nous pouvons en déterminé la puissance de calcule de chaque logiciel.<br>
+Grace aux informations recue tel que les shares nous pouvons en déterminé la puissance de calcule de chaque logiciel.<br>
 
 # Mining Multi GPU
 Nous allons utiliser une GPU `NVIDIA 3060` et une GPU `NVIDIA 3070 RTX`.<br>
 Nous allons miner sur `KAWPOW`.<br>
 <br>
-Nous avons comptabilisé le nombre de shares trouvé par chaque logiciel.<br>
+Nous avons comptabiliser le nombre de shares trouvé par chaque logiciel.<br>
 
 |       GPU       | T-REX | PICKMINER | BZMINER | GMINER | NBMINER |
 |:---------------:|:-----:|:---------:|:-------:|:------:|:-------:|
